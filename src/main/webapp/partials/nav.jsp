@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<% String username = (String) session.getAttribute("username"); %>
+
+<header>
+	<nav class="navbar navbar-expand-md navbar-dark colorbarra" aria-label="Fourth navbar example">
+        <div class="container">
+          <a class="navbar-brand" href="#"><img src="img/Logo_tierra_media.png" alt="Logo"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarsExample04">
+            <ul class="navbar-nav menu ms-auto mb-2 mb-md-0" data-animation="center">
+              <li class="nav-item">
+                <a class="nav-link active colorfont" aria-current="page" href="index.jsp">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ingresar.jsp">Ingresar</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="catalogo.jsp" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Catálogo</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown04">
+                  <li><a class="dropdown-item" href="catalogo.jsp#Aventura">Aventura</a></li>
+                  <li><a class="dropdown-item" href="catalogo.jsp#Paisaje">Paisaje</a></li>
+                  <li><a class="dropdown-item" href="catalogo.jsp#Degustación">Degustación</a></li>
+                </ul>
+              </li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false"><%= username %></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown05">
+                  <li><a class="dropdown-item" href="#">Monedas</a></li>
+                  <li><a class="dropdown-item" href="#">Tiempo</a></li>
+                  <li><a class="dropdown-item" href="logout">Salir</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>
