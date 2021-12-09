@@ -66,7 +66,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			statement.setInt(3, u.getIdUsuario());
 			statement.executeUpdate();
 
-			for (Propuestas comprada : u.itinerarioUsuario) {
+			for (Propuestas comprada : u.getItinerarioUsuario()) {
 
 				if (comprada.getEsPromo() == false) {
 					String query2 = "INSERT INTO ITINERARIO (ID_USUARIO, ID_ATRACCION, ID_PROMOCION) VALUES (?, ?, ?)";
@@ -105,7 +105,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		} finally {
 			conn.commit();
 		}
-		return u.itinerarioUsuario;
+		return u.getItinerarioUsuario();
 	}
 
 	@Override
