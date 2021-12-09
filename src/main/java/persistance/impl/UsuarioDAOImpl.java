@@ -201,7 +201,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 
 	@Override
-	public List<Usuario> findByNombre(String nombre) {
+	public Usuario findByNombre(String nombre) {
 		try {
 			String query = "SELECT * FROM USUARIO WHERE NOMBRE = ?";
 			Connection conn = ConnectionProvider.getConnection();
@@ -210,9 +210,9 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 			ResultSet results = statement.executeQuery();
 
-			List<Usuario> usuarios = new LinkedList<Usuario>();
+			Usuario usuarios = null;
 			while (results.next()) {
-				usuarios.add(toUsuario(results));
+				usuarios =(toUsuario(results));
 			}
 			return usuarios;
 		} catch (Exception e) {
