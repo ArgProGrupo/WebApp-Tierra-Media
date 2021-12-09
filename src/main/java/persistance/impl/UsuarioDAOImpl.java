@@ -65,7 +65,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			statement.setInt(3, u.getIdUsuario());
 			statement.executeUpdate();
 
-			for (Propuestas comprada : u.itinerarioUsuario) {
+			for (Propuestas comprada : u.getItinerarioUsuario()) {
 
 				if (comprada.getEsPromo() == false) {
 					String query2 = "INSERT INTO ITINERARIO (ID_USUARIO, ID_ATRACCION, ID_PROMOCION) VALUES (?, ?, ?)";
@@ -104,7 +104,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		} finally {
 			conn.commit();
 		}
-		return u.itinerarioUsuario;
+		return u.getItinerarioUsuario();
 	}
 
 	@Override
@@ -133,7 +133,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.setString(1, t.getNombre());
-			statement.setString(2, t.getPassword);
+			statement.setString(2, t.getPassword());
 			statement.setInt(3, t.isAdmin() ? 1 : 0);
 			statement.setString(4, t.getTipoAtraccionFavorita());
 			statement.setDouble(5, t.getPresupuesto());
@@ -153,7 +153,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.setString(1, t.getNombre());
-			statement.setString(2, t.getPassword);
+			statement.setString(2, t.getPassword());
 			statement.setDouble(3, t.getPresupuesto());
 			statement.setDouble(4, t.getTiempo());
 			statement.setInt(5, t.getIdUsuario());

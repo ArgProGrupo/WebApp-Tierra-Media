@@ -6,15 +6,15 @@ import utils.Crypt;
 
 public class Usuario {
 
-	private Integer idUsuario;
-	private String nombre;
-	private String password;
-	private boolean admin;
-	private String atraccionFavorita;
-	private Integer presupuesto;
-	private Double tiempoDisponible;
-	private boolean active;
-	public ArrayList<Propuestas> itinerarioUsuario;
+	protected Integer idUsuario;
+	protected String nombre;
+	protected String password;
+	protected boolean admin;
+	protected String atraccionFavorita;
+	protected Integer presupuesto;
+	protected Double tiempoDisponible;
+	protected boolean active;
+	protected ArrayList<Propuestas> itinerarioUsuario;
 	
 
 	public Usuario(Integer idUsuario, String nombre, String password, boolean admin, String atraccionFavorita, Integer presupuesto, 
@@ -147,7 +147,19 @@ public class Usuario {
 		this.password = Crypt.hash(password);
 	}
 	
+	public String getPassword() {
+		return this.password;
+	}
+	
 	public boolean isAdmin() {
 		return admin;
+	}
+	
+	public void setItinerarioUsuario(ArrayList<Propuestas> itinerarioUsuario) {
+		this.itinerarioUsuario = itinerarioUsuario;
+	}
+	
+	public ArrayList<Propuestas> getItinerarioUsuario() {
+		return this.itinerarioUsuario;
 	}
 }
