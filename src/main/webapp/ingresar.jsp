@@ -46,6 +46,14 @@
     			</p>
     		</div>
     	</c:if>
+    	
+    	<c:if test="${ success != null }">
+			<div class="alert alert-success w-100 col-md-12 text-center">
+				<p>
+					<c:out value="${ success }" />
+				</p>
+			</div>
+		</c:if>
     </main>
 </body>
     

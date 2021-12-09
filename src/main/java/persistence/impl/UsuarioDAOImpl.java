@@ -1,4 +1,4 @@
-package persistance.impl;
+package persistence.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,9 +10,10 @@ import java.util.List;
 
 import model.Propuestas;
 import model.Usuario;
-import persistance.UsuarioDAO;
-import persistance.commons.ConnectionProvider;
-import persistance.commons.MissingDataException;
+import nullobjects.NullUsuario;
+import persistence.UsuarioDAO;
+import persistence.commons.ConnectionProvider;
+import persistence.commons.MissingDataException;
 
 public class UsuarioDAOImpl implements UsuarioDAO {
 
@@ -21,11 +22,11 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			return new Usuario(result.getInt(1),
 							result.getString(2), 
 							result.getString(3),
-							result.getString(4),
-							result.getInt(5) == 1,  //IsAdmin
-							result.getString(6),
+							result.getBoolean(4), //¿¿ == 1 ??IsAdmin
+							result.getString(5),  
+							result.getInt(6),
 							result.getDouble(7),
-							result.getInt(8) == 1  //Active
+							result.getBoolean(8)  //¿¿ == 1 ??Active
 							);
 		} catch (Exception e) {
 			throw new MissingDataException(e);
@@ -125,19 +126,19 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 	}
 
-	// Agregar campos PASSWORD y ADMIN
 	@Override
 	public int insert(Usuario t) {
 		try {
-			String query = "INSERT INTO USUARIO (NOMBRE, PASSWORD, ADMIN, TIPO_FAVORITO, PRESUPUESTO, TIEMPO_DISPONIBLE) VALUES (?, ?, ?, ?, ?, ?)";
+			String query = "INSERT INTO USUARIO (NOMBRE, PASSWORD, ADMIN, TIPO_FAVORITO, PRESUPUESTO, TIEMPO_DISPONIBLE, ACTIVE) VALUES (?, ?, ?, ?, ?, ?, ?)";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.setString(1, t.getNombre());
-			statement.setString(2, t.getPassword);
+			statement.setString(2, t.getPassword());
 			statement.setInt(3, t.isAdmin() ? 1 : 0);
 			statement.setString(4, t.getTipoAtraccionFavorita());
 			statement.setDouble(5, t.getPresupuesto());
 			statement.setDouble(6, t.getTiempo());
+			statement.setInt(7, t.isActive() ? 1 : 0);
 
 			int rows = statement.executeUpdate();
 			return rows;
@@ -153,7 +154,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.setString(1, t.getNombre());
-			statement.setString(2, t.getPassword);
+			statement.setString(2, t.getPassword());
 			statement.setDouble(3, t.getPresupuesto());
 			statement.setDouble(4, t.getTiempo());
 			statement.setInt(5, t.getIdUsuario());
@@ -181,7 +182,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 
 	@Override
-	public Usuario findByIdUsuario(int idUsuario) {
+	public Usuario findByIdUsuario(Integer idUsuario) {
 		try {
 			String query = "SELECT * FROM USUARIO WHERE ID_USUARIO = ?";
 			Connection conn = ConnectionProvider.getConnection();
@@ -190,7 +191,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 			ResultSet results = statement.executeQuery();
 
-			Usuario usuario = null;
+			Usuario usuario = NullUsuario.build();
 			if (results.next()) {
 				usuario = toUsuario(results);
 			}
@@ -201,7 +202,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 
 	@Override
-	public List<Usuario> findByNombre(String nombre) {
+	public Usuario findByNombre(String nombre) {
 		try {
 			String query = "SELECT * FROM USUARIO WHERE NOMBRE = ?";
 			Connection conn = ConnectionProvider.getConnection();
@@ -209,12 +210,13 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			statement.setString(1, nombre);
 
 			ResultSet results = statement.executeQuery();
-
-			List<Usuario> usuarios = new LinkedList<Usuario>();
-			while (results.next()) {
-				usuarios.add(toUsuario(results));
+			
+			Usuario usuario = NullUsuario.build();
+			
+			if (results.next()) {
+				usuario = toUsuario(results);
 			}
-			return usuarios;
+			return usuario;
 		} catch (Exception e) {
 			throw new MissingDataException(e);
 		}
@@ -241,7 +243,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 
 	@Override
-	public List<Usuario> findByPresupuesto(int presupuesto) {
+	public List<Usuario> findByPresupuesto(Integer presupuesto) {
 		try {
 			String query = "SELECT * FROM USUARIO WHERE PRESUPUESTO = ?";
 			Connection conn = ConnectionProvider.getConnection();
@@ -261,7 +263,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 
 	@Override
-	public List<Usuario> findByTiempoDisponible(double tiempoDisponible) {
+	public List<Usuario> findByTiempoDisponible(Double tiempoDisponible) {
 		try {
 			String query = "SELECT * FROM USUARIO WHERE TIEMPO_DISPONIBLE = ?";
 			Connection conn = ConnectionProvider.getConnection();

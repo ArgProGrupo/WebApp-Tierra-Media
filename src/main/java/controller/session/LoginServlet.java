@@ -24,16 +24,15 @@ public class LoginServlet extends HttpServlet implements Servlet {
 		loginService = new LoginService();
 	}
 
-	//¿doPost o service?
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String nombre = req.getParameter("username");
 		String password = req.getParameter("password");
 		
 		Usuario usuario = loginService.login(nombre, password);
 		
-		if (usuario.isNull()) {
+		if (!usuario.isNull()) {
 			req.getSession().setAttribute("usuario", usuario);
 			resp.sendRedirect("index.jsp");
 		} else {
