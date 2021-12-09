@@ -5,7 +5,7 @@ import model.Usuario;
 public class NullUsuario extends Usuario {
 	
 	public NullUsuario() {
-		super(0, "", " ", 0, 0.0);
+		super(0, "", " ", false, " ", 0, 0.0, false);
 	}
 	
 	public static Usuario build() {
