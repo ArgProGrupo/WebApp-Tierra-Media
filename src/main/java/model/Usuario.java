@@ -223,7 +223,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "id_usuario: " + idUsuario + " | Nombre: " + nombre +
-			   " | password: " + password + " | admin: " + admin +
+			   " | Password: " + password + " | Admin: " + admin +
 			   " | Atraccion Favorita: " + atraccionFavorita + " | Presupuesto: " + presupuesto +
 			   " | Tiempo Disponible: " + tiempoDisponible;
 	}
