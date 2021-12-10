@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet implements Servlet {
 		
 		Usuario usuario = loginService.login(nombre, password);
 		
-		if (usuario.isNull()) {
+		if (!usuario.isNull()) {
 			req.getSession().setAttribute("usuario", usuario);
 			resp.sendRedirect("index.jsp");
 		} else {

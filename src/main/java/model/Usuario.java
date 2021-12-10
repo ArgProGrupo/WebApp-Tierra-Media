@@ -144,7 +144,7 @@ public class Usuario {
 	}
 	
 	public void setPassword(String nombre) {
-		this.password = Crypt.hash(password);
+		this.password = Crypt.hash(nombre);
 	}
 	
 	public String getPassword() {
