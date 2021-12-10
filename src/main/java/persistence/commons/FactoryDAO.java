@@ -1,7 +1,7 @@
-package persistance.commons;
+package persistence.commons;
 
-import persistance.UsuarioDAO;
-import persistance.impl.UsuarioDAOImpl;
+import persistence.UsuarioDAO;
+import persistence.impl.UsuarioDAOImpl;
 
 public class FactoryDAO {
 

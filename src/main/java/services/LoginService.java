@@ -2,8 +2,8 @@ package services;
 
 import model.Usuario;
 import nullobjects.NullUsuario;
-import persistance.UsuarioDAO;
-import persistance.commons.FactoryDAO;
+import persistence.UsuarioDAO;
+import persistence.commons.FactoryDAO;
 
 public class LoginService {
 	

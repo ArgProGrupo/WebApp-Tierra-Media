@@ -1,4 +1,4 @@
-package persistance.commons;
+package persistence.commons;
 
 import java.util.List;
 

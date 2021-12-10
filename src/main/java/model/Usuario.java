@@ -9,20 +9,21 @@ public class Usuario {
 	protected Integer idUsuario;
 	protected String nombre;
 	protected String password;
-	protected boolean admin;
+	protected Boolean admin;
 	protected String atraccionFavorita;
 	protected Integer presupuesto;
 	protected Double tiempoDisponible;
-	protected boolean active;
-	protected ArrayList<Propuestas> itinerarioUsuario;
+	protected Boolean active;
+	public ArrayList<Propuestas> itinerarioUsuario;
+	private HashMap<String, String> errors;
 	
 
-	public Usuario(Integer idUsuario, String nombre, String password, boolean admin, String atraccionFavorita, Integer presupuesto, 
-			Double tiempoDisponible, boolean active) {
+	public Usuario(Integer idUsuario, String nombre, String password, Boolean admin, String atraccionFavorita, Integer presupuesto, 
+			Double tiempoDisponible, Boolean active) {
 		
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
-		this.setPassword(password);
+		this.password = password;
 		this.admin = admin;
 		this.atraccionFavorita = atraccionFavorita;
 		this.presupuesto = presupuesto;
@@ -32,9 +33,9 @@ public class Usuario {
 		this.itinerarioUsuario = new ArrayList<Propuestas>();
 	}
 	
-	public Usuario(String nombre, String password, boolean admin, String atraccionFavorita, Integer presupuesto, Double tiempoDisponible) {
+	public Usuario(String nombre, String password, Boolean admin, String atraccionFavorita, Integer presupuesto, Double tiempoDisponible) {
 		this.nombre = nombre;
-		this.setPassword(password);
+		this.password = password;
 		this.admin = admin;
 		this.atraccionFavorita = atraccionFavorita;
 		this.presupuesto = presupuesto;
@@ -43,32 +44,35 @@ public class Usuario {
 		//this.itinerarioUsuario = new ArrayList<Propuestas>();
 	}
 	
-	public Usuario(int idUsuario) {
+	public Usuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
-	public Usuario(int idUsuario, String nombre, String password, String string3, boolean b, String string4, double double1,
-			boolean active2) {
-		// TODO Auto-generated constructor stub
+	public Usuario(String nombre, String password, String atraccionFavorita, Integer presupuesto, Double tiempoDisponible) {
+		this.nombre = nombre;
+		this.password = password;
+		this.atraccionFavorita = atraccionFavorita;
+		this.presupuesto = presupuesto;
+		this.tiempoDisponible = tiempoDisponible;
 	}
 
-	public int getIdUsuario() {
+	public Integer getIdUsuario() {
 		return idUsuario;
 	}
 	
-	public int setIdUsuario(int id) {
-		return this.idUsuario = id;
+	public void setIdUsuario(Integer id) {
+		this.idUsuario = id;
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
 
-	public double getPresupuesto() {
+	public Integer getPresupuesto() {
 		return this.presupuesto;
 	}
 
-	public double getTiempo() {
+	public Double getTiempo() {
 		return this.tiempoDisponible;
 	}
 
@@ -85,13 +89,6 @@ public class Usuario {
 			itinerario = "";
 		return itinerario;
 
-	}
-
-	@Override
-	public String toString() {
-		return "id_usuario: " + idUsuario + " | Nombre: " + nombre +
-			   " | Atraccion Favorita: " + atraccionFavorita + " | Presupuesto: " + presupuesto +
-			   " | Tiempo Disponible: " + tiempoDisponible;
 	}
 
 	public boolean puedeComprar(Propuestas propuesta) {
@@ -143,23 +140,72 @@ public class Usuario {
 		return Crypt.match(password, this.password);
 	}
 	
-	public void setPassword(String nombre) {
-		this.password = Crypt.hash(nombre);
+	public void setPassword(String password) {
+		this.password = Crypt.hash(password);
 	}
 	
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 	
-	public boolean isAdmin() {
+	public Boolean getAdmin() {
 		return admin;
 	}
 	
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
+	}
+	
+	public Boolean isAdmin() {
+		return admin;
+	}
+	
+	public Boolean getActive() {
+		return active;
+	}
+	
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+	
+	public Boolean isActive() {
+		return active;
+	}
+
+
 	public void setItinerarioUsuario(ArrayList<Propuestas> itinerarioUsuario) {
 		this.itinerarioUsuario = itinerarioUsuario;
 	}
 	
 	public ArrayList<Propuestas> getItinerarioUsuario() {
 		return this.itinerarioUsuario;
+	}
+
+	public boolean isValid() {
+		validate();
+		return errors.isEmpty();
+	}
+	
+	public void validate() {
+		errors = new HashMap<String, String>();
+
+		if (presupuesto < 0) {
+			errors.put("coins", "No debe ser negativo");
+		}
+		if (tiempoDisponible < 0) {
+			errors.put("time", "No debe ser negativo");
+		}
+	}
+	
+	public Map<String, String> getErrors() {
+		return errors;
+	}
+	
+	@Override
+	public String toString() {
+		return "id_usuario: " + idUsuario + " | Nombre: " + nombre +
+			   " | password: " + password + " | admin: " + admin +
+			   " | Atraccion Favorita: " + atraccionFavorita + " | Presupuesto: " + presupuesto +
+			   " | Tiempo Disponible: " + tiempoDisponible;
 	}
 }
