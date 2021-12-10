@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -16,7 +18,7 @@
                 <div class="col-md-12 text-center">
                     <img class="mb-4" src="img/Logo_tierra_media.png" alt="Logo" width="150" height="100">
                 </div>
-                <h1 class="h3 mb-3 fw-normal">Ingres· tu nombre de usuario y contraseÒa</h1>
+                <h1 class="h3 mb-3 fw-normal">Ingres√° tu nombre de usuario y contrase√±a</h1>
 
                 <div class="form-floating mb-3">
                     <input type="text" name="username" class="form-control" id="floatingUsername" placeholder="Pepito">
@@ -26,7 +28,7 @@
                 
                 <div class="form-floating mb-3">
                     <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">ContraseÒa</label>
+                    <label for="floatingPassword">Contrase√±a</label>
                 </div>
                 
                 <div class="checkbox mb-3">

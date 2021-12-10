@@ -36,7 +36,7 @@
 			</div>
 
 			<div class="mb-3">
-				<label for="admin" class="col-form-label">administrador:</label> <input
+				<label for="admin" class="col-form-label">Administrador:</label> <input
 					type="number" class="form-control" id="admin" name="admin" required
 					value="${tmp_user.admin}">
 			</div>
@@ -68,14 +68,14 @@
 					name="tiempoDisponible" required
 					value="${tmp_user.tiempoDisponible}"></input>
 				<div class="invalid-feedback">
-					<c:out value='${tmp_user.errors.get("tiempoDisponibleime")}'></c:out>
+					<c:out value='${tmp_user.errors.get("tiempoDisponible")}'></c:out>
 				</div>
 			</div>
 
 			<div class="mb-3">
-				<label for="active" class="col-form-label">administrador:</label> <input
-					type="number" class="form-control" id="active" name="active"
-					required value="${tmp_user.active}">
+				<label for="active" class="col-form-label">Active:</label> <input
+					type="number" class="form-control" id="active" name="active" required
+					value="${tmp_user.active}">
 			</div>
 
 			<div>

@@ -10,7 +10,7 @@ public class UsuarioService {
 		return FactoryDAO.getUsuarioDAO().findAll();
 	}
 
-	public Usuario create(String nombre, String password, Boolean admin, String atraccionFavorita, Integer presupuesto, Double tiempoDisponible, Boolean active) {
+	public Usuario create(String nombre, String password, Integer admin, String atraccionFavorita, Integer presupuesto, Double tiempoDisponible, Integer active) {
 		Usuario usuario = new Usuario(-1, nombre, password, admin, atraccionFavorita, presupuesto, tiempoDisponible, active);
 		usuario.setPassword(password);
 

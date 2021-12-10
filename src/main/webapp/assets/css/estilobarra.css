@@ -1,20 +1,23 @@
-:root {
-    --azul: #05668D;
-    --celeste: #427AA1;
-    --clarito: #EBF2FA;
-    --verde: #679436;
-    --verdeclaro: #A5BE00;
-    --amarillo: #F2B705;
-    --marron: #734B02;
-    --text-color: #AAAEBC;
-  }
-  .colorbarra {
-      background-color: var(--marron);
-  }
-  .dropdown-menu {
-    background-color: var(--verdeclaro) !important;
-  }
-  .nav-link {
+:root { 
+	--azul: #05668D;
+	--celeste: #427AA1;
+	--clarito: #EBF2FA;
+	--verde: #679436;
+	--verdeclaro: #A5BE00;
+	--amarillo: #F2B705;
+	--marron: #734B02;
+	--text-color: #AAAEBC;
+}
+
+.colorbarra {
+	background-color: var(--marron);
+}
+
+.dropdown-menu {
+	background-color: var(--verdeclaro) !important;
+}
+
+.nav-link {
       color: var(--amarillo) !important;
       font-size: 1em;
       padding: 0 8px;
