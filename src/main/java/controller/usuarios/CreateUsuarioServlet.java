@@ -37,17 +37,17 @@ public class CreateUsuarioServlet extends HttpServlet implements Servlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nombre = req.getParameter("username");
 		String password = req.getParameter("password");
-		Boolean admin = Boolean.parseBoolean(req.getParameter("admin"));
-		String tipoFavorito = req.getParameter("tipoFavorito");
+		Integer admin = Integer.parseInt(req.getParameter("admin"));
+		String tipoAtraccion = req.getParameter("tipoAtraccion");
 		Integer presupuesto = Integer.parseInt(req.getParameter("presupuesto"));
 		Double tiempoDisponible = Double.parseDouble(req.getParameter("tiempoDisponible"));
-		Boolean active = Boolean.parseBoolean(req.getParameter("active"));
+		Integer active = Integer.parseInt(req.getParameter("active"));
 		
 
-		Usuario tmp_user = usuarioService.create(nombre, password, admin, tipoFavorito, presupuesto, tiempoDisponible, active);
+		Usuario tmp_user = usuarioService.create(nombre, password, admin, tipoAtraccion, presupuesto, tiempoDisponible, active);
 		
 		if (tmp_user.isValid()) {
-			resp.sendRedirect("/ingresar.jsp");
+			resp.sendRedirect("/TierraMediaWeb/usuarios.jsp");
 		} else {
 			req.setAttribute("tmp_user", tmp_user);
 

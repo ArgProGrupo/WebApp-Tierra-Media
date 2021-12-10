@@ -14,7 +14,7 @@ public class Usuario {
 	protected Integer presupuesto;
 	protected Double tiempoDisponible;
 	protected Boolean active;
-	public ArrayList<Propuestas> itinerarioUsuario;
+	protected ArrayList<Propuestas> itinerarioUsuario;
 	private HashMap<String, String> errors;
 	
 
@@ -33,6 +33,20 @@ public class Usuario {
 		this.itinerarioUsuario = new ArrayList<Propuestas>();
 	}
 	
+	public Usuario(Integer idUsuario, String nombre, String password, Integer admin1, String atraccionFavorita, Integer presupuesto, 
+			Double tiempoDisponible, Integer active1) {
+		setAdmin(admin1);
+		setActive(active1);
+		this.idUsuario = idUsuario;
+		this.nombre = nombre;
+		this.password = password;
+		this.atraccionFavorita = atraccionFavorita;
+		this.presupuesto = presupuesto;
+		this.tiempoDisponible = tiempoDisponible;
+		
+		this.itinerarioUsuario = new ArrayList<Propuestas>();
+	}
+	
 	public Usuario(String nombre, String password, Boolean admin, String atraccionFavorita, Integer presupuesto, Double tiempoDisponible) {
 		this.nombre = nombre;
 		this.password = password;
@@ -41,7 +55,7 @@ public class Usuario {
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		
-		//this.itinerarioUsuario = new ArrayList<Propuestas>();
+		this.itinerarioUsuario = new ArrayList<Propuestas>();
 	}
 	
 	public Usuario(Integer idUsuario) {
@@ -152,8 +166,10 @@ public class Usuario {
 		return admin;
 	}
 	
-	public void setAdmin(Boolean admin) {
-		this.admin = admin;
+	public void setAdmin(Integer admin1) {
+		if(admin1 == 1) {
+			this.admin = true;
+		} else { this.admin = false; }
 	}
 	
 	public Boolean isAdmin() {
@@ -164,8 +180,12 @@ public class Usuario {
 		return active;
 	}
 	
-	public void setActive(Boolean active) {
-		this.active = active;
+	public void setActive(Integer active1) {
+		if(active1 == 1) {
+			this.active = true;
+		} else {
+			this.active = false;
+		}
 	}
 	
 	public Boolean isActive() {

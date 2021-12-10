@@ -25,7 +25,7 @@
       <img src="img/paisaje.jfif" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Bienvenide</h5>
-        <p>¡Vení a pasear por los bosques oscuros.</p>
+        <p>¡Vení a pasear por los bosques oscuros!</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">

@@ -1,4 +1,4 @@
-/*package filters;
+package filters;
 
 import java.io.IOException;
 
@@ -30,4 +30,4 @@ public class LoggedFilter implements Filter {
 
 	}
 
-}*/
+}
