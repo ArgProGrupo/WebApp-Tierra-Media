@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<% String username = (String) session.getAttribute("username"); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <header>
 	<nav class="navbar navbar-expand-md navbar-dark colorbarra" aria-label="Fourth navbar example">
         <div class="container">
-          <a class="navbar-brand" href="#"><img src="img/Logo_tierra_media.png" alt="Logo"></a>
+          <a class="navbar-brand" href="#"><img src="assets/img/Logo_tierra_media.png" alt="Logo"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -28,10 +27,13 @@
               </li>
               
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false"><%= username %></a>
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false"><c:out value="${ usuario.getNombre() }"></c:out></a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown05">
-                  <li><a class="dropdown-item" href="#">Monedas</a></li>
-                  <li><a class="dropdown-item" href="#">Tiempo</a></li>
+                  <li><a class="dropdown-item" href="#">Monedas: <c:out value="${ usuario.getPresupuesto() }"></c:out></a></li>
+                  <li><a class="dropdown-item" href="#">Tiempo: <c:out value="${ usuario.getTiempo() }"></c:out></a></li>
+                  <c:if test="${ usuario.isAdmin() }">
+                  <li><a class="dropdown-item" href="usuarios.jsp">Editar Usuarios</a></li>
+                  </c:if>
                   <li><a class="dropdown-item" href="logout">Salir</a></li>
                 </ul>
               </li>
