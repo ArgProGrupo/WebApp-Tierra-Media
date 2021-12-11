@@ -167,9 +167,8 @@ public class Usuario {
 	}
 	
 	public void setAdmin(Integer admin1) {
-		if(admin1 == 1) {
+		if(admin1 == 1)
 			this.admin = true;
-		} else { this.admin = false; }
 	}
 	
 	public Boolean isAdmin() {
@@ -181,11 +180,8 @@ public class Usuario {
 	}
 	
 	public void setActive(Integer active1) {
-		if(active1 == 1) {
+		if(active1 == 1)
 			this.active = true;
-		} else {
-			this.active = false;
-		}
 	}
 	
 	public Boolean isActive() {

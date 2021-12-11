@@ -22,21 +22,21 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
-      <img src="img/paisaje.jfif" class="d-block w-100" alt="...">
+      <img src="assets/img/paisaje.jfif" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Bienvenide</h5>
         <p>¡Vení a pasear por los bosques oscuros!</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src="img/degustacion.jfif" class="d-block w-100" alt="...">
+      <img src="assets/img/degustacion.jfif" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Tierra Media ++</h5>
         <p>¡Tomá cerveza en El Pony Pisador!</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="img/aventura.jfif" class="d-block w-100" alt="...">
+      <img src="assets/img/aventura.jfif" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Disfrutá la experiencia</h5>
         <p>Si tenés tiempo, salvás al mundo del Señor Oscuro</p>
@@ -54,7 +54,7 @@
 </div>
 		<div class="box">
 		<div class="card" style="width: 18rem;">
-  <img src="img/aventura.jfif" class="card-img-top" alt="...">
+  <img src="assets/img/aventura.jfif" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Aventura</h5>
     <p class="card-text">Luchá en batallas épicas contra dragones, orcos y trolls. Tenés la oportunidad única de salvar el Destino de la Tierra Media </p>
@@ -62,7 +62,7 @@
   </div>
 </div>
 	<div class="card" style="width: 18rem;">
-  <img src="img/paisaje.jfif" class="card-img-top" alt="...">
+  <img src="assets/img/paisaje.jfif" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Paisajes</h5>
     <p class="card-text">Escuchá el viento entre los árboles que hablan, sentí el frío de las montañas nevadas y contemplá la imponencia de los castillos medievales</p>
@@ -70,7 +70,7 @@
   </div>
 </div>
 	<div class="card" style="width: 18rem;">
-  <img src="img/degustacion.jfif" class="card-img-top" alt="...">
+  <img src="assets/img/degustacion.jfif" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Degustación</h5>
     <p class="card-text">Disfrutá del hidromiel y de los postres caseros de La comarca. Embriagate con las bebidas refinadas de los elfos y bailá al son de las flautas mágicas</p>
