@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public abstract class Propuestas {
@@ -13,6 +14,7 @@ public abstract class Propuestas {
 	protected String tipo;
 	protected Integer cantAtracciones;
 	protected Boolean esPromo;
+	protected HashMap<String, String> errors;
 
 	public Propuestas(String nombrePropuesta, Integer costo, Double tiempo, Integer cupo, String tipo) {
 		this.nombrePropuesta = nombrePropuesta;

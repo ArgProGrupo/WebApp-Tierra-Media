@@ -1,5 +1,7 @@
 package model;
 
+import java.util.HashMap;
+
 public class Atraccion extends Propuestas {
 	private int idAtraccion;
 
@@ -37,6 +39,25 @@ public class Atraccion extends Propuestas {
 	@Override
 	protected Boolean esOContiene(Propuestas propuesta) {
 		return (this.equals(propuesta));
+	}
+	
+	public boolean isValid() {
+		validate();
+		return errors.isEmpty();
+	}
+	
+	public void validate() {
+		errors = new HashMap<String, String>();
+
+		if (costo < 0) {
+			errors.put("costo", "No debe ser negativo");
+		}
+		if (tiempo < 0) {
+			errors.put("duracion", "No debe ser negativo");
+		}
+		if (cupo < 0) {
+			errors.put("cupo", "No debe ser negativo");
+		}
 	}
 
 }

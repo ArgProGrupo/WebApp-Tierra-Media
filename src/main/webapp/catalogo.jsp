@@ -15,7 +15,7 @@
 
 <main>
 
-<a class="btn btn-success" href="nuevaPropuesta.jsp" role="button">Nueva Propuesta</a>
+<a class="btn btn-success" href="nuevaAtraccion.jsp" role="button">Nueva Atracción</a>
 
 <h2><a id="Aventura"></a>Aventura</h2>
 
