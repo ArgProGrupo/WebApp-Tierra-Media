@@ -6,6 +6,7 @@ import model.Usuario;
 import persistence.commons.FactoryDAO;
 
 public class UsuarioService {
+	
 	public List<Usuario> list() {
 		return FactoryDAO.getUsuarioDAO().findAll();
 	}
@@ -21,4 +22,8 @@ public class UsuarioService {
 
 		return usuario;
 	}
+	
+//	public static void main(String[] args) {
+//		System.out.println(UsuarioService.list());
+//	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,20 +20,27 @@
 
 <div class="row row-cols-1 row-cols-md-2 g-4">
 
+<c:forEach items="${usuarios}" var="tmp_usuario">
+
   <div class="col">
     <div class="card">
       <img src="img/eowyn.png" class="card-img-top" alt="..." >
       <div class="card-body">
-        <h5 class="card-title">Eowyn</h5>
+        <h5 class="card-title"><c:out value="${ tmp_usuario.getNombre() }"></c:out></h5>
 	    <ul>
-		    <li class="list-group-item"><b>Aventura</b></li>
-		    <li class="list-group-item">10 monedas</li>
-		    <li class="list-group-item">8 horas</li>
+		    <li class="list-group-item"><b><c:out value="${ tmp_usuario.getTipoAtraccionFavorita() }"></c:out></b></li>
+		    <li class="list-group-item"><c:out value="${ tmp_usuario.getPresupuesto() }"></c:out></li>
+		    <li class="list-group-item"><c:out value="${ tmp_usuario.getTiempo() }"></c:out></li>
 		    <li class="list-group-item">Itinerario: </li>
+		    <!-- <li class="list-group-item"><c:out value="${ tmp_usuario.getItinerarioString() }"></c:out> </li> -->
 	    </ul>
       </div>
     </div>
   </div>
+  
+  </c:forEach>
+  </div>
+  <!-- 
   <div class="col">
     <div class="card">
       <img src="img/gandalf.png" class="card-img-top" alt="...">
@@ -77,6 +85,7 @@
   </div>
 </div>
 
+ -->
 
 </main>
 </body>

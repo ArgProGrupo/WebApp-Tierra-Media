@@ -32,7 +32,7 @@
                   <li><a class="dropdown-item" href="#">Monedas: <c:out value="${ usuario.getPresupuesto() }"></c:out></a></li>
                   <li><a class="dropdown-item" href="#">Tiempo: <c:out value="${ usuario.getTiempo() }"></c:out></a></li>
                   <c:if test="${ usuario.isAdmin() }">
-                  <li><a class="dropdown-item" href="usuarios.jsp">Editar Usuarios</a></li>
+                  <li><a class="dropdown-item" href="usuarios.do">Editar Usuarios</a></li>
                   </c:if>
                   <li><a class="dropdown-item" href="logout">Salir</a></li>
                 </ul>

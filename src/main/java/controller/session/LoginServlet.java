@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet implements Servlet {
 
 		if (!usuario.isNull() && usuario.isAdmin()) {
 			req.getSession().setAttribute("usuario", usuario);
-			resp.sendRedirect("nuevoUsuario.jsp"); //Podemos cambiar a la direccion que queramos
+			resp.sendRedirect("index.jsp"); //Podemos cambiar a la direccion que queramos
 		} else if (!usuario.isNull()) {
 			req.getSession().setAttribute("usuario", usuario);
 			resp.sendRedirect("index.jsp");
