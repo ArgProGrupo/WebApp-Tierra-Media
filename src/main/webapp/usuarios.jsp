@@ -24,7 +24,7 @@
 
   <div class="col">
     <div class="card">
-      <img src="img/eowyn.png" class="card-img-top" alt="..." >
+      
       <div class="card-body">
         <h5 class="card-title"><c:out value="${ tmp_usuario.getNombre() }"></c:out></h5>
 	    <ul>

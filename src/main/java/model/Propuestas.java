@@ -1,20 +1,22 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public abstract class Propuestas {
-	protected int idPromocion;
-	protected int idAtraccion;
+	protected Integer idPromocion;
+	protected Integer idAtraccion;
 	protected String nombrePropuesta;
-	protected int costo;
-	protected double tiempo;
-	protected int cupo;
+	protected Integer costo;
+	protected Double tiempo;
+	protected Integer cupo;
 	protected String tipo;
-	protected int cantAtracciones;
-	protected boolean esPromo;
+	protected Integer cantAtracciones;
+	protected Boolean esPromo;
+	protected HashMap<String, String> errors;
 
-	public Propuestas(String nombrePropuesta, int costo, double tiempo, int cupo, String tipo) {
+	public Propuestas(String nombrePropuesta, Integer costo, Double tiempo, Integer cupo, String tipo) {
 		this.nombrePropuesta = nombrePropuesta;
 		this.costo = costo;
 		this.tiempo = tiempo;
@@ -22,7 +24,7 @@ public abstract class Propuestas {
 		this.tipo = tipo;
 	}
 
-	public Propuestas(int id, String nombrePropuesta, int costo, double tiempo, int cupo, String tipo) {
+	public Propuestas(Integer id, String nombrePropuesta, Integer costo, Double tiempo, Integer cupo, String tipo) {
 		this.idAtraccion = id;
 		this.nombrePropuesta = nombrePropuesta;
 		this.costo = costo;
@@ -31,7 +33,7 @@ public abstract class Propuestas {
 		this.tipo = tipo;
 	}
 
-	public Propuestas(String nombrePropuesta, String tipo, int cantAtracciones) {
+	public Propuestas(String nombrePropuesta, String tipo, Integer cantAtracciones) {
 		this.nombrePropuesta = nombrePropuesta;
 		this.tipo = tipo;
 		this.cantAtracciones = cantAtracciones;
@@ -45,19 +47,19 @@ public abstract class Propuestas {
 
 	}
 
-	public int getIdAtraccion() {
+	public Integer getIdAtraccion() {
 		return this.idAtraccion;
 	}
 
-	public int getCosto() {
+	public Integer getCosto() {
 		return this.costo;
 	}
 
-	public double getTiempo() {
+	public Double getTiempo() {
 		return this.tiempo;
 	}
 
-	public int getCupo() {
+	public Integer getCupo() {
 		return this.cupo;
 	}
 
@@ -87,7 +89,7 @@ public abstract class Propuestas {
 				&& Double.doubleToLongBits(tiempo) == Double.doubleToLongBits(other.tiempo) && tipo == other.tipo;
 	}
 
-	public int restarCupo() {
+	public Integer restarCupo() {
 		if (this.cupo > 0) {
 			this.cupo = getCupo();
 			this.cupo--;
@@ -98,13 +100,13 @@ public abstract class Propuestas {
 
 	}
 
-	public boolean getEsPromo() {
+	public Boolean getEsPromo() {
 		return this.esPromo;
 	}
 
-	protected abstract boolean esOContiene(Propuestas propuesta);
+	protected abstract Boolean esOContiene(Propuestas propuesta);
 
-	public int getIdPromocion() {
+	public Integer getIdPromocion() {
 		return this.idPromocion;
 	}
 
