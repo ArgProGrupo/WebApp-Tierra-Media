@@ -1,4 +1,4 @@
-package controller.usuarios;
+package controller.propuestas;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,8 +14,8 @@ import model.Propuestas;
 import services.AtraccionService;
 
 // Editar usuario tiene que llevar a http://localhost:8080/TierraMediaWeb/usuarios.do
-@WebServlet("/atracciones.do")
-public class MostrarAtraccionesServlet extends HttpServlet implements Servlet {
+@WebServlet("/catalogo.do")
+public class MostrarCatalogoServlet extends HttpServlet implements Servlet {
 
 	private static final long serialVersionUID = -6719722765612521298L;
 	private AtraccionService atraccionService;
@@ -35,9 +35,17 @@ public class MostrarAtraccionesServlet extends HttpServlet implements Servlet {
 		req.setAttribute("atracciones", atracciones);
 
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/nuevaAtraccion.jsp");
+				.getRequestDispatcher("/catalogo.jsp");
+		
+//		RequestDispatcher dispatcher2 = getServletContext()
+//				.getRequestDispatcher("/catalogo.jsp");
+		
+//		dispatcher2.forward(req, resp);
+		
 //		"/TierraMediaWeb/usuarios.jsp"
+		
 		dispatcher.forward(req, resp);
+		
 
 	}
 	
