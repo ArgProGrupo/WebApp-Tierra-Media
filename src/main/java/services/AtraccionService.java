@@ -22,4 +22,10 @@ public class AtraccionService {
 
 		return atraccion;
 	}
+	
+//	public static void main(String[] args) throws ServletException {
+//		AtraccionService a = new AtraccionService();
+//		System.out.println(a.list());	
+//	}
+	
 }

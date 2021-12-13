@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -72,31 +73,23 @@
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">#</th>
-					<th scope="col">First</th>
-					<th scope="col">Last</th>
-					<th scope="col">Handle</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Costo</th>
+					<th scope="col">Tiempo</th>
+					<th scope="col">Cupo</th>
+					<th scope="col">Tipo</th>
 				</tr>
 			</thead>
 			<tbody>
+			<c:forEach items="${ atracciones }" var="tmp_atraccion">
 				<tr>
-					<th scope="row">1</th>
-					<td>Mark</td>
-					<td>Otto</td>
-					<td>@mdo</td>
+					<th scope="row"><c:out value="${ tmp_atraccion.getNombre() }"></c:out></th>
+					<td><c:out value="${ tmp_atraccion.getCosto() }"></c:out></td>
+					<td><c:out value="${ tmp_atraccion.getTiempo() }"></c:out></td>
+					<td><c:out value="${ tmp_atraccion.getCupo() }"></c:out></td>
+					<td><c:out value="${ tmp_atraccion.getTipo() }"></c:out></td>
 				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>Jacob</td>
-					<td>Thornton</td>
-					<td>@fat</td>
-				</tr>
-				<tr>
-					<th scope="row">3</th>
-					<td>Larry</td>
-					<td>the Bird</td>
-					<td>@twitter</td>
-				</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 

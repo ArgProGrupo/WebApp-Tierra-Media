@@ -43,7 +43,7 @@ public class CreateAtraccionServlet extends HttpServlet implements Servlet {
 		Atraccion tmp_atraccion = atraccionService.create(nombre, costo,tiempo, cupo , tipoAtraccion);
 
 		if (tmp_atraccion.isValid()) {
-			resp.sendRedirect("/TierraMediaWeb/nuevaAtraccion.jsp");
+			resp.sendRedirect("/TierraMediaWeb/atracciones.do");
 		} else {
 			req.setAttribute("tmp_atraccion", tmp_atraccion);
 

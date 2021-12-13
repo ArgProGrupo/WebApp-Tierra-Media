@@ -59,5 +59,21 @@ public class Atraccion extends Propuestas {
 			errors.put("cupo", "No debe ser negativo");
 		}
 	}
+	
+	public String getNombre() {
+		return super.getNombre();
+	}
+	
+	public Integer getCosto() {
+		return super.getCosto();
+	}
+	
+	public Double getTiempo() {
+		return super.getTiempo();
+	}
+	
+	public Integer getCupo() {
+		return super.getCupo();
+	}
 
 }
