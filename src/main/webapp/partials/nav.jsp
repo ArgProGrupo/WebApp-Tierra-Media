@@ -18,11 +18,11 @@
                 <a class="nav-link" href="ingresar.jsp">Ingresar</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="catalogo.jsp" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Catálogo</a>
+                <a class="nav-link dropdown-toggle" href="catalogo.do" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Catálogo</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown04">
-                  <li><a class="dropdown-item" href="catalogo.jsp#Aventura">Aventura</a></li>
-                  <li><a class="dropdown-item" href="catalogo.jsp#Paisaje">Paisaje</a></li>
-                  <li><a class="dropdown-item" href="catalogo.jsp#Degustación">Degustación</a></li>
+                  <li><a class="dropdown-item" href="catalogo.do#Aventura">Aventura</a></li>
+                  <li><a class="dropdown-item" href="catalogo.do#Paisaje">Paisaje</a></li>
+                  <li><a class="dropdown-item" href="catalogo.do#Degustación">Degustación</a></li>
                 </ul>
               </li>
               
