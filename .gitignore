@@ -1,3 +1,2 @@
 /target/
-Tierra_Media_Prueba_Va.db/
-/env.properties
+src/main/resources/env.properties
