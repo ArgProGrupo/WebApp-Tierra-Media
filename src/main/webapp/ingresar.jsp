@@ -14,7 +14,7 @@
 <body>
     <main class="form-signin">
         <div class="container w-50 mt-5 rounded shadow">
-            <form action="ingresar" method="post">
+            <form action="/TierraMediaWeb/ingresar" method="post">
                 <div class="col-md-12 text-center">
                     <img class="mb-4" src="assets/img/Logo_tierra_media.png" alt="Logo" width="150" height="100">
                 </div>

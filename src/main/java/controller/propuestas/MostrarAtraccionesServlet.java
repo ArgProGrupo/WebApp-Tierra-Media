@@ -14,7 +14,7 @@ import model.Propuestas;
 import services.AtraccionService;
 
 // Editar usuario tiene que llevar a http://localhost:8080/TierraMediaWeb/usuarios.do
-@WebServlet("/atracciones.do")
+@WebServlet("/atracciones/atracciones.do")
 public class MostrarAtraccionesServlet extends HttpServlet implements Servlet {
 
 	private static final long serialVersionUID = -6719722765612521298L;
@@ -25,17 +25,14 @@ public class MostrarAtraccionesServlet extends HttpServlet implements Servlet {
 		super.init();
 		this.atraccionService = new AtraccionService();
 	}
-	
-//	List<Propuestas> atracciones = atraccionService.list();
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Propuestas> atracciones = atraccionService.list();
 		req.setAttribute("atracciones", atracciones);
 
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/nuevaAtraccion.jsp");
+				.getRequestDispatcher("/views/atracciones/atracciones.jsp");
 		
 		dispatcher.forward(req, resp);
 		

@@ -22,13 +22,13 @@
 
 	<div class="list-group">
 	
-<c:forEach items="${ atracciones }" var="tmp_atraccion">
+<c:forEach items="${ atracciones }" var="atraccion">
 
-		<c:if test="${ tmp_atraccion.getTipo() == 'AVENTURA' }">
+		<c:if test="${ atraccion.getTipo() == 'AVENTURA' }">
 
 		  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
 		    <div class="d-flex w-100 justify-content-between">
-		      <h5 class="mb-1"><c:out value="${ tmp_atraccion.getNombre() }"></c:out> </h5>
+		      <h5 class="mb-1"><c:out value="${ atraccion.getNombre() }"></c:out> </h5>
 		      <div class="btn-group" role="group" aria-label="Button group">
 		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
 		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
@@ -47,13 +47,13 @@
   
   <h2><a id="Paisaje"></a>Paisaje</h2>
   
-  <c:forEach items="${ atracciones }" var="tmp_atraccion">
+  <c:forEach items="${ atracciones }" var="atraccion">
 
-		<c:if test="${ tmp_atraccion.getTipo() == 'PAISAJE' }">
+		<c:if test="${ atraccion.getTipo() == 'PAISAJE' }">
 
 		  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
 		    <div class="d-flex w-100 justify-content-between">
-		      <h5 class="mb-1"><c:out value="${ tmp_atraccion.getNombre() }"></c:out> </h5>
+		      <h5 class="mb-1"><c:out value="${ atraccion.getNombre() }"></c:out> </h5>
 		      <div class="btn-group" role="group" aria-label="Button group">
 		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
 		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
@@ -72,13 +72,13 @@
   
   <h2><a id="Degustación"></a>Degustación</h2>
   
-  <c:forEach items="${ atracciones }" var="tmp_atraccion">
+  <c:forEach items="${ atracciones }" var="atraccion">
 
-		<c:if test="${ tmp_atraccion.getTipo() == 'DEGUSTACION' }">
+		<c:if test="${ atraccion.getTipo() == 'DEGUSTACION' }">
 
 		  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
 		    <div class="d-flex w-100 justify-content-between">
-		      <h5 class="mb-1"><c:out value="${ tmp_atraccion.getNombre() }"></c:out> </h5>
+		      <h5 class="mb-1"><c:out value="${ atraccion.getNombre() }"></c:out> </h5>
 		      <div class="btn-group" role="group" aria-label="Button group">
 		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
 		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>

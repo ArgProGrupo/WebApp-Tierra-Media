@@ -16,6 +16,7 @@ public class FactoryDAO {
 	public static AtraccionDAO getAtraccionDAO() {
 		return new AtraccionDAOImpl();
 	}
+	
 	public static PromocionDAO getPromocionDAO() {
 		return new PromocionDAOImpl();
 	} 
