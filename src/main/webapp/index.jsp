@@ -58,7 +58,7 @@
   <div class="card-body">
     <h5 class="card-title">Aventura</h5>
     <p class="card-text">Luchá en batallas épicas contra dragones, orcos y trolls. Tenés la oportunidad única de salvar el Destino de la Tierra Media </p>
-    <a href="catalogo.jsp#Aventura" class="btn btn-primary">¡A por ello!</a>
+    <a href="catalogo.do#Aventura" class="btn btn-primary">¡A por ello!</a>
   </div>
 </div>
 	<div class="card" style="width: 18rem;">
@@ -66,7 +66,7 @@
   <div class="card-body">
     <h5 class="card-title">Paisajes</h5>
     <p class="card-text">Escuchá el viento entre los árboles que hablan, sentí el frío de las montañas nevadas y contemplá la imponencia de los castillos medievales</p>
-    <a href="catalogo.jsp#Paisaje" class="btn btn-primary"><i>Taking the hobbits to Isengard!</i></a>
+    <a href="catalogo.do#Paisaje" class="btn btn-primary"><i>Taking the hobbits to Isengard!</i></a>
   </div>
 </div>
 	<div class="card" style="width: 18rem;">
@@ -74,7 +74,7 @@
   <div class="card-body">
     <h5 class="card-title">Degustación</h5>
     <p class="card-text">Disfrutá del hidromiel y de los postres caseros de La comarca. Embriagate con las bebidas refinadas de los elfos y bailá al son de las flautas mágicas</p>
-    <a href="catalogo.jsp#Degustación" class="btn btn-primary">¡Salud!</a>
+    <a href="catalogo.do#Degustación" class="btn btn-primary">¡Salud!</a>
   </div>
 </div>
 </div>

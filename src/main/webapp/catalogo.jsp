@@ -22,6 +22,26 @@
 
 	<div class="list-group">
 	
+	<c:forEach items="${ promociones }" var="promocion">
+		<c:if test="${ promocion.getTipo() == 'AVENTURA' }">
+
+		  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+		    <div class="d-flex w-100 justify-content-between">
+		      <h5 class="mb-1"><c:out value="${ promocion.getNombrePromo() }"></c:out> </h5>
+		      <div class="btn-group" role="group" aria-label="Button group">
+		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
+		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+		  <button type="button" class="btn btn-primary">Comprar</button>
+		  
+	
+		</div>
+		    </div>
+		    <p class="mb-1">Descripción</p>
+		    <small>Detalle</small>
+		  </a>
+	  </c:if>
+	</c:forEach>
+	
 <c:forEach items="${ atracciones }" var="atraccion">
 
 		<c:if test="${ atraccion.getTipo() == 'AVENTURA' }">
@@ -45,7 +65,27 @@
   
   </c:forEach>
   
-  <h2><a id="Paisaje"></a>Paisaje</h2>
+    <h2><a id="Paisaje"></a>Paisaje</h2>
+  
+  <c:forEach items="${ promociones }" var="promocion">
+		<c:if test="${ promocion.getTipo() == 'PAISAJE' }">
+
+		  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+		    <div class="d-flex w-100 justify-content-between">
+		      <h5 class="mb-1"><c:out value="${ promocion.getNombrePromo() }"></c:out> </h5>
+		      <div class="btn-group" role="group" aria-label="Button group">
+		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
+		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+		  <button type="button" class="btn btn-primary">Comprar</button>
+		  
+	
+		</div>
+		    </div>
+		    <p class="mb-1">Descripción</p>
+		    <small>Detalle</small>
+		  </a>
+	  </c:if>
+	</c:forEach>
   
   <c:forEach items="${ atracciones }" var="atraccion">
 
@@ -71,6 +111,26 @@
   </c:forEach>
   
   <h2><a id="Degustación"></a>Degustación</h2>
+  
+  <c:forEach items="${ promociones }" var="promocion">
+		<c:if test="${ promocion.getTipo() == 'DEGUSTACION' }">
+
+		  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+		    <div class="d-flex w-100 justify-content-between">
+		      <h5 class="mb-1"><c:out value="${ promocion.getNombrePromo() }"></c:out> </h5>
+		      <div class="btn-group" role="group" aria-label="Button group">
+		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
+		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+		  <button type="button" class="btn btn-primary">Comprar</button>
+		  
+	
+		</div>
+		    </div>
+		    <p class="mb-1">Descripción</p>
+		    <small>Detalle</small>
+		  </a>
+	  </c:if>
+	</c:forEach>
   
   <c:forEach items="${ atracciones }" var="atraccion">
 
