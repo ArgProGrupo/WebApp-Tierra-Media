@@ -16,7 +16,11 @@
 
 <main> 
 
+<c:if test="${ usuario.isAdmin() }">
 <a class="btn btn-success" href="nuevoUsuario.jsp" role="button">Nuevo Usuario</a>
+<a class="btn btn-warning" href="#" role="button">Editar Usuario</a>
+<a class="btn btn-danger" href="#" role="button">Eliminar Usuario</a>
+</c:if>
 
 <div class="row row-cols-1 row-cols-md-2 g-4">
 

@@ -219,13 +219,13 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}	
 	
-		public int delete(Atraccion t) {
+		public int delete(Integer id) {
 			try {
-				String query = "DELETE FROM ATRACCION WHERE ID_ATRACCION = ?";
+				String query = "UPDATE USUARIO SET ACTIVE = 0 WHERE ID = ?";
 				Connection conn = ConnectionProvider.getConnection();
 				PreparedStatement statement = conn.prepareStatement(query);
 
-				statement.setInt(1, t.getIdAtraccion());
+				statement.setInt(1, id);
 
 				int rows = statement.executeUpdate();
 				return rows;

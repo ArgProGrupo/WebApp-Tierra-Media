@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
 import services.UsuarioService;
 
-@WebServlet("/create.do")
+@WebServlet("/create.adm")
 public class CreateUsuarioServlet extends HttpServlet implements Servlet {
 
 	private static final long serialVersionUID = -2821821443971474022L;
@@ -47,7 +47,7 @@ public class CreateUsuarioServlet extends HttpServlet implements Servlet {
 		Usuario tmp_user = usuarioService.create(nombre, password, admin, tipoAtraccion, presupuesto, tiempoDisponible, active);
 		
 		if (tmp_user.isValid()) {
-			resp.sendRedirect("/TierraMediaWeb/usuarios.jsp");
+			resp.sendRedirect("/TierraMediaWeb/usuarios.adm");
 		} else {
 			req.setAttribute("tmp_user", tmp_user);
 

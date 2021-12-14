@@ -18,7 +18,7 @@
 
 	<main>
 
-		<form action="create.do" method="post">
+		<form action="create.adm" method="post">
 			<div class="mb-3">
 				<label for="name" class="col-form-label">Nombre:</label> <input
 					type="text" class="form-control" id="name" name="username" required

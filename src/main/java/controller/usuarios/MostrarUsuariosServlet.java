@@ -14,7 +14,7 @@ import model.Usuario;
 import services.UsuarioService;
 
 // Editar usuario tiene que llevar a http://localhost:8080/TierraMediaWeb/usuarios.do
-@WebServlet("/usuarios.do")
+@WebServlet("/usuarios.adm")
 public class MostrarUsuariosServlet extends HttpServlet implements Servlet {
 	
 	private static final long serialVersionUID = -5158378959933399013L;
