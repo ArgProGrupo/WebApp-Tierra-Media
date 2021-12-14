@@ -27,7 +27,7 @@ public class EditAtraccionServlet extends HttpServlet implements Servlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = Integer.parseInt(req.getParameter("id"));
-		Atraccion atraccion = atraccionService.findById(id); //agregar metodo al AtraccionService
+		Atraccion atraccion = atraccionService.findById(id);
 		req.setAttribute("atraccion", atraccion);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/atracciones/edit.jsp");
@@ -47,11 +47,11 @@ public class EditAtraccionServlet extends HttpServlet implements Servlet {
 		Atraccion atraccion = atraccionService.update(id, nombre, costo, tiempo, cupo , tipoAtraccion);
 
 		if (atraccion.isValid()) {
-			resp.sendRedirect("/TierraMediaWeb/atracciones.adm");
+			resp.sendRedirect("/TierraMediaWeb/atracciones/atracciones.do");
 		} else {
 			req.setAttribute("atraccion", atraccion);
 
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/atracciones/edit.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/TierraMediaWeb/atracciones/edit.jsp");
 			dispatcher.forward(req, resp);
 		}
 	}

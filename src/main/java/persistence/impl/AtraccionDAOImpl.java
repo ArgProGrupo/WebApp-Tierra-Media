@@ -23,6 +23,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 
+	@Override
 	public List<Propuestas> findAll() {
 		try {
 			String query = "SELECT * FROM ATRACCION";
@@ -40,6 +41,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 
+	@Override
 	public int countAll() {
 		try {
 			String query = "SELECT COUNT(1) AS TOTAL FROM ATRACCION";
@@ -57,6 +59,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 
+	@Override
 	public int insert(Propuestas t) {
 		try {
 			String query = "INSERT INTO ATRACCION (NOMBRE, COSTO, DURACION, CUPO, TIPO) VALUES (?, ?, ?, ?, ?)";
@@ -75,13 +78,18 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 
+	@Override
 	public int update(Propuestas t) {
 		try {
-			String query = "UPDATE ATRACCION SET CUPO = ? WHERE ID_ATRACCION = ?";
+			String query = "UPDATE ATRACCION SET NOMBRE = ?, COSTO = ?, DURACION = ?, CUPO = ?, TIPO = ? WHERE ID_ATRACCION = ?";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(query);
-			statement.setInt(1, t.getCupo());
-			statement.setInt(2, t.getIdAtraccion());
+			statement.setString(1, t.getNombre());
+			statement.setInt(2, t.getCosto());
+			statement.setDouble(3, t.getTiempo());
+			statement.setInt(4, t.getCupo());
+			statement.setString(5, t.getTipo());
+			statement.setInt(6, t.getIdAtraccion());
 
 			int rows = statement.executeUpdate();
 			return rows;
@@ -90,6 +98,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 
+	@Override
 	public int delete(Propuestas t) {
 		try {
 			String query = "DELETE FROM ATRACCION WHERE ID_ATRACCION = ?";
@@ -105,6 +114,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 
+	@Override
 	public Atraccion findByIdAtraccion(int idAtraccion) {
 		try {
 			String query = "SELECT * FROM ATRACCION WHERE ID_ATRACCION = ?";
@@ -124,6 +134,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 
+	@Override
 	public List<Atraccion> findByNombre(String nombre) {
 		try {
 			String query = "SELECT * FROM ATRACCION WHERE NOMBRE = ?";
@@ -143,6 +154,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 
+	@Override
 	public List<Atraccion> findByCosto(int costo) {
 		try {
 			String query = "SELECT * FROM ATRACCION WHERE COSTO = ?";
@@ -162,6 +174,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 
+	@Override
 	public List<Atraccion> findByDuracion(double duracion) {
 		try {
 			String query = "SELECT * FROM ATRACCION WHERE DURACION = ?";
@@ -181,6 +194,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 
+	@Override
 	public List<Atraccion> findByCupo(int cupo) {
 		try {
 			String query = "SELECT * FROM ATRACCION WHERE CUPO = ?";
@@ -200,6 +214,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 
+	@Override
 	public List<Atraccion> findByTipo(String tipo) {
 		try {
 			String query = "SELECT * FROM ATRACCION WHERE TIPO = ?";
@@ -218,19 +233,20 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 			throw new MissingDataException(e);
 		}
 	}	
-	
-		public int delete(Integer id) {
-			try {
-				String query = "UPDATE USUARIO SET ACTIVE = 0 WHERE ID = ?";
-				Connection conn = ConnectionProvider.getConnection();
-				PreparedStatement statement = conn.prepareStatement(query);
 
-				statement.setInt(1, id);
+	@Override
+	public int delete(Integer id) {
+		try {
+			String query = "UPDATE USUARIO SET ACTIVE = 0 WHERE ID = ?";
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement statement = conn.prepareStatement(query);
 
-				int rows = statement.executeUpdate();
-				return rows;
-			} catch (Exception e) {
-				throw new MissingDataException(e);
+			statement.setInt(1, id);
+
+			int rows = statement.executeUpdate();
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
 		}
 	}
 }

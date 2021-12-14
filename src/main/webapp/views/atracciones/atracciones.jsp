@@ -37,12 +37,19 @@
 						<td><c:out value="${ atraccion.getTiempo() }"></c:out></td>
 						<td><c:out value="${ atraccion.getCupo() }"></c:out></td>
 						<td><c:out value="${ atraccion.getTipo() }"></c:out></td>
-						<c:if test="${ usuario.isAdmin() }">
-							<td>
-								<a href="edit.adm?id=${ atraccion.getIdAtraccion() }">Editar</a>
-								<a href="delete.adm?name=${ atraccion.getNombre() }">Borrar</a>
+						<td>
+							<c:choose>
+								<c:when test="${ usuario.isAdmin() }">
+									<a href="edit.adm?id=${ atraccion.getIdAtraccion() }">Editar</a>
+									<a href="delete.adm?name=${ atraccion.getNombre() }">Borrar</a>
+								</c:when>
+								<c:otherwise>
+									<a href="buy.do?id=${ product.getId() }">Comprar</a>
+								</c:otherwise>
+							</c:choose>
+							
 							</td>
-						</c:if>
+						
 						
 					</tr>
 			</c:forEach>

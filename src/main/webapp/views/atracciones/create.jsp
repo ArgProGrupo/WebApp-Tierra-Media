@@ -15,7 +15,7 @@
 	
 	<h2>Crear nueva Atracción</h2>
 	
-	<form action="atracciones/create.adm" method="post"> <!-- deberia buscarle la vuelta también revisar si es necesario poner la ruta completa edit.adm o /TierraMediaWeb/atracciones/edit.do-->
+	<form action="create.adm" method="post">
 		<input type="hidden" name="id" value="${ atraccion.getIdAtraccion() }">
 		<jsp:include page="formAtracciones.jsp"></jsp:include>
 	</form>

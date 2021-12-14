@@ -150,7 +150,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	@Override
 	public int update(Usuario t) {
 		try {
-			String query = "UPDATE USUARIO SET NOMBRE = ? SET PASSWORD = ? SET PRESUPUESTO = ?, TIEMPO_DISPONIBLE = ? WHERE ID_USUARIO = ?";
+			String query = "UPDATE USUARIO SET NOMBRE = ?, PASSWORD = ?, PRESUPUESTO = ?, TIEMPO_DISPONIBLE = ? WHERE ID_USUARIO = ?";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.setString(1, t.getNombre());
@@ -169,7 +169,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	@Override
 	public int delete(Integer id) {
 		try {
-			String query = "UPDATE USUARIO SET ACTIVE = 0 WHERE ID = ?"; // Cambiado de esta consulta a la que puse "DELETE FROM USUARIO WHERE ID_USUARIO = ?"
+			String query = "UPDATE USUARIO SET ACTIVE = 0 WHERE ID = ?";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.setInt(1, id);
