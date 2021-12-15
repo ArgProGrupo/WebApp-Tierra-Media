@@ -19,14 +19,14 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	private Usuario toUsuario(ResultSet result) {
 		try {
-			return new Usuario(result.getInt(1),
-							result.getString(2), 
-							result.getString(3),
-							result.getBoolean(4), //¿¿ == 1 ??IsAdmin
-							result.getString(5),  
-							result.getInt(6),
-							result.getDouble(7),
-							result.getBoolean(8)  //¿¿ == 1 ??Active
+			return new Usuario(result.getInt(1),   //id
+							result.getString(2),   //nombre
+							result.getString(3),   //password
+							result.getInt(4) == 1, //Admin
+							result.getString(5),   //tipo
+							result.getInt(6),      //presupuesto
+							result.getDouble(7),   //tiempo
+							result.getInt(8) == 1  //Active
 							);
 		} catch (Exception e) {
 			throw new MissingDataException(e);
@@ -150,14 +150,17 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	@Override
 	public int update(Usuario t) {
 		try {
-			String query = "UPDATE USUARIO SET NOMBRE = ?, PASSWORD = ?, PRESUPUESTO = ?, TIEMPO_DISPONIBLE = ? WHERE ID_USUARIO = ?";
+			String query = "UPDATE USUARIO SET NOMBRE = ?, PASSWORD = ?, ADMIN = ?, TIPO_FAVORITO = ?, PRESUPUESTO = ?, TIEMPO_DISPONIBLE = ?, ACTIVE = ? WHERE ID_USUARIO = ?";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.setString(1, t.getNombre());
 			statement.setString(2, t.getPassword());
-			statement.setDouble(3, t.getPresupuesto());
-			statement.setDouble(4, t.getTiempo());
-			statement.setInt(5, t.getIdUsuario());
+			statement.setInt(3, t.getAdmin() ? 1 : 0);
+			statement.setString(4, t.getTipoAtraccionFavorita());
+			statement.setInt(5, t.getPresupuesto());
+			statement.setDouble(6, t.getTiempo());
+			statement.setInt(7, t.getActive() ? 1 : 0);
+			statement.setInt(8, t.getIdUsuario());
 
 			int rows = statement.executeUpdate();
 			return rows;

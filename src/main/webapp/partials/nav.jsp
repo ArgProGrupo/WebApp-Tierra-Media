@@ -33,7 +33,7 @@
                   <li><a class="dropdown-item" href="#">Monedas: <c:out value="${ usuario.getPresupuesto() }"></c:out></a></li>
                   <li><a class="dropdown-item" href="#">Tiempo: <c:out value="${ usuario.getTiempo() }"></c:out></a></li>
                   <c:if test="${ usuario.isAdmin() }">
-                  <li><a class="dropdown-item" href="/TierraMediaWeb/usuarios.adm">Editar Usuarios</a></li>
+                  <li><a class="dropdown-item" href="/TierraMediaWeb/usuarios/usuarios.adm">Editar Usuarios</a></li>
                   </c:if>
                   <li><a class="dropdown-item" href="/TierraMediaWeb/atracciones/atracciones.do">Atracciones</a></li>
                   <li><a class="dropdown-item" href="/TierraMediaWeb/logout">Salir</a></li>

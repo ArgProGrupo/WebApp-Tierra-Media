@@ -10,10 +10,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.ComparadorDeAtracciones;
 import model.Propuestas;
+import model.Usuario;
 import services.AtraccionService;
 
-// Editar usuario tiene que llevar a http://localhost:8080/TierraMediaWeb/usuarios.do
 @WebServlet("/atracciones/atracciones.do")
 public class MostrarAtraccionesServlet extends HttpServlet implements Servlet {
 
@@ -28,20 +29,14 @@ public class MostrarAtraccionesServlet extends HttpServlet implements Servlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		List<Propuestas> atracciones = atraccionService.list();
 		req.setAttribute("atracciones", atracciones);
-
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/views/atracciones/atracciones.jsp");
 		
+		//Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		//req.setAttribute("atracciones", atracciones.sort(new ComparadorDeAtracciones(usuario.getTipoAtraccionFavorita())));
+
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/atracciones/atracciones.jsp");
 		dispatcher.forward(req, resp);
-		
-
 	}
-	
-//	public static void main(String[] args) throws ServletException {
-//		MostrarAtraccionesServlet a = new MostrarAtraccionesServlet();
-//		a.init();
-//		System.out.println(a.atracciones);	}
-
 }

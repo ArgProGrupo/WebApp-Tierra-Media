@@ -10,6 +10,23 @@ public class UsuarioService {
 	public List<Usuario> list() {
 		return FactoryDAO.getUsuarioDAO().findAll();
 	}
+	
+	public void delete(Integer id) {
+		FactoryDAO.getUsuarioDAO().delete(id);
+	}
+	
+	public Usuario update(Integer id, String nombre, String password, Integer admin, String atraccionFavorita, Integer presupuesto, Double tiempo, Integer active) {
+		Usuario usuario = new Usuario(id, nombre, password, admin, atraccionFavorita, presupuesto, tiempo, active);
+		if(usuario.isValid()) {
+			FactoryDAO.getUsuarioDAO().update(usuario);
+		}
+		return usuario;
+	}
+	
+	public Usuario findById(Integer id) {
+		return FactoryDAO.getUsuarioDAO().findByIdUsuario(id);
+	}
+
 
 	public Usuario create(String nombre, String password, Integer admin, String atraccionFavorita, Integer presupuesto, Double tiempoDisponible, Integer active) {
 		Usuario usuario = new Usuario(-1, nombre, password, admin, atraccionFavorita, presupuesto, tiempoDisponible, active);

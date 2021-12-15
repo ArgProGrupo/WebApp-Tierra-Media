@@ -13,10 +13,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
 import services.UsuarioService;
 
-// Editar usuario tiene que llevar a http://localhost:8080/TierraMediaWeb/usuarios.do
-@WebServlet("/usuarios.adm")
+@WebServlet("/usuarios/usuarios.adm")
 public class MostrarUsuariosServlet extends HttpServlet implements Servlet {
-	
+
 	private static final long serialVersionUID = -5158378959933399013L;
 	private UsuarioService usuarioService;
 
@@ -25,25 +24,13 @@ public class MostrarUsuariosServlet extends HttpServlet implements Servlet {
 		super.init();
 		this.usuarioService = new UsuarioService();
 	}
-	
-//	List<Usuario> usuarios = usuarioService.list();
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Usuario> usuarios = usuarioService.list();
 		req.setAttribute("usuarios", usuarios);
 
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/usuarios.jsp");
-//		"/TierraMediaWeb/usuarios.jsp"
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/usuarios/usuarios.jsp");
 		dispatcher.forward(req, resp);
-
 	}
-	
-//	public static void main(String[] args) throws ServletException {
-//		MostrarUsuariosServlet a = new MostrarUsuariosServlet();
-//		a.init();
-//		System.out.println(a);	}
-
 }

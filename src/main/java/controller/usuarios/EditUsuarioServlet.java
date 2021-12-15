@@ -12,13 +12,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
 import services.UsuarioService;
 
-@WebServlet("/usuarios/nuevoUsuario.adm")
-public class CreateUsuarioServlet extends HttpServlet implements Servlet {
+@WebServlet("/usuarios/editUsuarios.adm")
+public class EditUsuarioServlet extends HttpServlet implements Servlet {
 
-	private static final long serialVersionUID = -2821821443971474022L;
-	
+	private static final long serialVersionUID = -5703845683601259788L;
+
 	private UsuarioService usuarioService;
-
+	
 	@Override
 	public void init() throws ServletException {
 		super.init();
@@ -27,33 +27,35 @@ public class CreateUsuarioServlet extends HttpServlet implements Servlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/usuarios/nuevoUsuario.jsp");
+		Integer id = Integer.parseInt(req.getParameter("id"));
+		Usuario tmp_usuario = usuarioService.findById(id);
+		req.setAttribute("tmp_usuario", tmp_usuario);
+		
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/usuarios/editUsuarios.jsp");
 		dispatcher.forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Integer id = Integer.parseInt(req.getParameter("id"));
 		String nombre = req.getParameter("username");
 		String password = req.getParameter("password");
-		Integer admin = Integer.parseInt(req.getParameter("admin"));
+		Integer admin = Integer.parseInt("admin");  // Da problemas a la hora de editar
 		String tipoAtraccion = req.getParameter("tipoAtraccion");
 		Integer presupuesto = Integer.parseInt(req.getParameter("presupuesto"));
 		Double tiempoDisponible = Double.parseDouble(req.getParameter("tiempoDisponible"));
 		Integer active = Integer.parseInt(req.getParameter("active"));
-		
 
-		Usuario tmp_user = usuarioService.create(nombre, password, admin, tipoAtraccion, presupuesto, tiempoDisponible, active);
-		
-		if (tmp_user.isValid()) {
+
+		Usuario temp_user = usuarioService.update(id, nombre, password, admin, tipoAtraccion , presupuesto, tiempoDisponible, active);
+
+		if (temp_user.isValid()) {
 			resp.sendRedirect("/TierraMediaWeb/usuarios/usuarios.adm");
 		} else {
-			req.setAttribute("tmp_user", tmp_user);
+			req.setAttribute("temp_user", temp_user);
 
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/TierraMediaWeb/usuarios/nuevoUsuario.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/TierraMediaWeb/usuarios/editUsuarios.jsp");
 			dispatcher.forward(req, resp);
 		}
-
 	}
-
 }
