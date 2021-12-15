@@ -2,6 +2,7 @@ package controller.propuestas;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.Servlet;
@@ -14,38 +15,39 @@ import model.Atraccion;
 import model.Promocion;
 import model.Propuestas;
 import model.Usuario;
+import persistence.commons.FactoryDAO;
 import services.AtraccionService;
+import services.ComprarAtraccionService;
 import services.PromocionService;
 
-@WebServlet("/comprar")
+@WebServlet("/comprar.do")
 public class ComprarAtraccionServlet extends HttpServlet implements Servlet {
 	private static final long serialVersionUID = -1500626018984218236L;
 	
-	private AtraccionService atraccionService;
-	private PromocionService promocionService;
+	private ComprarAtraccionService comprarAtraccionServicer;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		this.atraccionService = new AtraccionService();
-		this.promocionService = new PromocionService();
+		this.comprarAtraccionServicer = new ComprarAtraccionService();
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		List<Propuestas> atracciones = atraccionService.list();
-		req.setAttribute("atracciones", atracciones);
-		
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		Integer atraccionId = Integer.parseInt(req.getParameter("id"));
 		
-		Atraccion atraccion = (Atraccion) req.getSession().getAttribute("atraccion");
+		Map<String, String> errores = comprarAtraccionServicer.comprar(usuario.getIdUsuario(), atraccionId);
 		
-		Promocion promocion = (Promocion) req.getSession().getAttribute("promocion");
+		Usuario usuario2 = FactoryDAO.getUsuarioDAO().findByIdUsuario(usuario.getIdUsuario());
+		req.getSession().setAttribute("usuario", usuario2);
 		
-		if(usuario.puedeComprar(atraccion)){
-			usuario.comprarPropuesta(atraccion);
+		if (errores.isEmpty()) {
+			req.setAttribute("flash", "COMPRADO");
+		} else {
+			req.setAttribute("Flash", "Error al comprar");
 		}
 		
 		RequestDispatcher dispatcher = getServletContext()

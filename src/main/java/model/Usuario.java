@@ -71,7 +71,7 @@ public class Usuario {
 	}
 
 	public Integer getIdUsuario() {
-		return idUsuario;
+		return this.idUsuario;
 	}
 	
 	public void setIdUsuario(Integer id) {

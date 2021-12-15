@@ -46,14 +46,14 @@
 
 		<c:if test="${ atraccion.getTipo() == 'AVENTURA' }">
 
-		  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+		  <a role="button" href="comprar.do?id=${ atraccion.getIdAtraccion() }" class="list-group-item list-group-item-action" aria-current="true">
 		    <div class="d-flex w-100 justify-content-between">
 		      <h5 class="mb-1"><c:out value="${ atraccion.getNombre() }"></c:out> </h5>
 		      <div class="btn-group" role="group" aria-label="Button group">
 		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
 		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-		  <form action="/TierraMediaWeb/comprar" method="post" class="btn btn-primary">Comprar</form>
-		  <!-- <button type="button" class="btn btn-primary">Comprar</button> -->
+		  <!--<form action="" method="post" class="btn btn-primary">Comprar</form> -->
+		    <button type="button" class="btn btn-primary">Comprar</button> 
 		  
 	
 		</div>
