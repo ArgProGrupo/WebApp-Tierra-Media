@@ -52,7 +52,8 @@
 		      <div class="btn-group" role="group" aria-label="Button group">
 		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
 		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-		  <button type="button" class="btn btn-primary">Comprar</button>
+		  <form action="/TierraMediaWeb/comprar" method="post" class="btn btn-primary">Comprar</form>
+		  <!-- <button type="button" class="btn btn-primary">Comprar</button> -->
 		  
 	
 		</div>

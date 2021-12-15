@@ -10,46 +10,49 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.ComparadorDeAtracciones;
+import model.Atraccion;
+import model.Promocion;
 import model.Propuestas;
 import model.Usuario;
 import services.AtraccionService;
+import services.PromocionService;
 
-// Editar usuario tiene que llevar a http://localhost:8080/TierraMediaWeb/usuarios.do
-@WebServlet("/atracciones/atracciones.do")
-public class MostrarAtraccionesServlet extends HttpServlet implements Servlet {
-
-	private static final long serialVersionUID = -6719722765612521298L;
+@WebServlet("/comprar")
+public class ComprarAtraccionServlet extends HttpServlet implements Servlet {
+	private static final long serialVersionUID = -1500626018984218236L;
+	
 	private AtraccionService atraccionService;
+	private PromocionService promocionService;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		this.atraccionService = new AtraccionService();
+		this.promocionService = new PromocionService();
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		
 		List<Propuestas> atracciones = atraccionService.list();
 		req.setAttribute("atracciones", atracciones);
 		
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
 		
-		atracciones.sort(new ComparadorDeAtracciones(usuario.getTipoAtraccionFavorita()));
+		Atraccion atraccion = (Atraccion) req.getSession().getAttribute("atraccion");
 		
-		req.setAttribute("atracciones", atracciones);
-
+		Promocion promocion = (Promocion) req.getSession().getAttribute("promocion");
+		
+		if(usuario.puedeComprar(atraccion)){
+			usuario.comprarPropuesta(atraccion);
+		}
+		
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/views/atracciones/atracciones.jsp");
+				.getRequestDispatcher("/catalogo.jsp");
 		
 		dispatcher.forward(req, resp);
-		
 
 	}
-	
-//	public static void main(String[] args) throws ServletException {
-//		MostrarAtraccionesServlet a = new MostrarAtraccionesServlet();
-//		a.init();
-//		System.out.println(a.atracciones);	}
 
 }

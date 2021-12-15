@@ -35,7 +35,7 @@ public class MostrarUsuariosServlet extends HttpServlet implements Servlet {
 		req.setAttribute("usuarios", usuarios);
 
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/usuarios.jsp");
+				.getRequestDispatcher("/views/usuarios/usuarios.jsp");
 //		"/TierraMediaWeb/usuarios.jsp"
 		dispatcher.forward(req, resp);
 
