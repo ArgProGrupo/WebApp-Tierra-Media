@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Propuestas;
 import services.AtraccionService;
+import services.PromocionService;
 
 // Editar usuario tiene que llevar a http://localhost:8080/TierraMediaWeb/usuarios.do
 @WebServlet("/catalogo.do")
@@ -19,11 +20,13 @@ public class MostrarCatalogoServlet extends HttpServlet implements Servlet {
 
 	private static final long serialVersionUID = -6719722765612521298L;
 	private AtraccionService atraccionService;
+	private PromocionService promocionService;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		this.atraccionService = new AtraccionService();
+		this.promocionService = new PromocionService();
 	}
 	
 //	List<Propuestas> atracciones = atraccionService.list();
@@ -33,6 +36,9 @@ public class MostrarCatalogoServlet extends HttpServlet implements Servlet {
 			throws ServletException, IOException {
 		List<Propuestas> atracciones = atraccionService.list();
 		req.setAttribute("atracciones", atracciones);
+		
+		List<Propuestas> promociones = promocionService.list();
+		req.setAttribute("promociones", promociones);
 
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/catalogo.jsp");

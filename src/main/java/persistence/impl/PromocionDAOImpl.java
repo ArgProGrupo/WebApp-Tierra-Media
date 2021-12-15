@@ -198,4 +198,20 @@ public class PromocionDAOImpl implements PromocionDAO {
 			throw new MissingDataException(e);
 		}
 	}
+
+	@Override
+	public int delete(Integer id) {
+		try {
+			String query = "UPDATE USUARIO SET ACTIVE = 0 WHERE ID = ?";
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement statement = conn.prepareStatement(query);
+
+			statement.setInt(1, id);
+
+			int rows = statement.executeUpdate();
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
 }

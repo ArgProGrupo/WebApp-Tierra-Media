@@ -152,7 +152,31 @@ public class Promocion extends Propuestas {
 	public String getTipoPromo() {
 		return tipoPromo;
 	}
+	
+	public String getNombrePromo() {
+		return nombrePropuesta;
+	}
+	
 	public Boolean getEsPromo() {
 		return this.esPromo;
+	}
+	
+	public void validate() {
+		errors = new HashMap<String, String>();
+
+		if (costo < 0) {
+			errors.put("costo", "No debe ser negativo");
+		}
+		if (tiempo < 0) {
+			errors.put("duracion", "No debe ser negativo");
+		}
+		if (cupo < 0) {
+			errors.put("cupo", "No debe ser negativo");
+		}
+	}
+
+	public boolean isValid() {
+		validate();
+		return errors.isEmpty();
 	}
 }
