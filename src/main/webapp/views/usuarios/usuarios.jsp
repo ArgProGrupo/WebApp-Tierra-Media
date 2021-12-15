@@ -16,11 +16,7 @@
 
 <main> 
 
-<c:if test="${ usuario.isAdmin() }">
-<a class="btn btn-success" href="nuevoUsuario.jsp" role="button">Nuevo Usuario</a>
-<a class="btn btn-warning" href="#" role="button">Editar Usuario</a>
-<a class="btn btn-danger" href="#" role="button">Eliminar Usuario</a>
-</c:if>
+<a class="btn btn-success" href="nuevoUsuario.adm" role="button">Nuevo Usuario</a>
 
 <div class="row row-cols-1 row-cols-md-2 g-4">
 
@@ -38,59 +34,14 @@
 		    <li class="list-group-item">Itinerario: </li>
 		    <!-- <li class="list-group-item"><c:out value="${ tmp_usuario.getItinerarioString() }"></c:out> </li> -->
 	    </ul>
+	    <a class="btn btn-warning" role="button" href="editUsuarios.adm?id=${ tmp_usuario.getIdUsuario() }">Editar Usuario</a>
+	    <a class="btn btn-danger" role="button" href="deleteUsuarios.adm?name=${ tmp_usuario.getNombre() }">Borrar Usuario</a>
       </div>
     </div>
   </div>
   
   </c:forEach>
   </div>
-  <!-- 
-  <div class="col">
-    <div class="card">
-      <img src="img/gandalf.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Gandalf</h5>
-        <ul>
-	        <li class="list-group-item"><b>Paisaje</b></li>
-	    	<li class="list-group-item">100 monedas</li>
-	    	<li class="list-group-item">8 horas</li>
-	    	<li class="list-group-item">Itinerario: </li>
-	    </ul>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="img/sam.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Sam</h5>
-        <ul>
-	        <li class="list-group-item"><b>Degustación</b></li>
-	    	<li class="list-group-item">36 monedas</li>
-	    	<li class="list-group-item">8 horas</li>
-	    	<li class="list-group-item">Itinerario: </li>
-	    </ul>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="img/galadriel.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Galadriel</h5>
-        <ul>
-	        <li class="list-group-item"><b>Paisaje</b></li>
-	    	<li class="list-group-item">120 monedas</li>
-	    	<li class="list-group-item">6 horas</li>
-	    	<li class="list-group-item">Itinerario: </li>
-	    </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
- -->
-
 </main>
 </body>
 </html>
