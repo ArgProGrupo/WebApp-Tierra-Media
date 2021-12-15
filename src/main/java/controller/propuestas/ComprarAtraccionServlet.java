@@ -1,6 +1,7 @@
 package controller.propuestas;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -24,12 +25,12 @@ import services.PromocionService;
 public class ComprarAtraccionServlet extends HttpServlet implements Servlet {
 	private static final long serialVersionUID = -1500626018984218236L;
 	
-	private ComprarAtraccionService comprarAtraccionServicer;
+	private ComprarAtraccionService comprarAtraccionService;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		this.comprarAtraccionServicer = new ComprarAtraccionService();
+		this.comprarAtraccionService = new ComprarAtraccionService();
 	}
 
 	@Override
@@ -39,7 +40,7 @@ public class ComprarAtraccionServlet extends HttpServlet implements Servlet {
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
 		Integer atraccionId = Integer.parseInt(req.getParameter("id"));
 		
-		Map<String, String> errores = comprarAtraccionServicer.comprar(usuario.getIdUsuario(), atraccionId);
+		Map<String, String> errores = comprarAtraccionService.comprar(usuario.getIdUsuario(), atraccionId);
 		
 		Usuario usuario2 = FactoryDAO.getUsuarioDAO().findByIdUsuario(usuario.getIdUsuario());
 		req.getSession().setAttribute("usuario", usuario2);

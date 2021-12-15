@@ -133,7 +133,7 @@ public class Usuario {
 		if (puedeComprar(propuesta)) {
 			this.presupuesto -= propuesta.getCosto();
 			this.tiempoDisponible -= propuesta.getTiempo();
-			itinerarioUsuario.add(propuesta);
+			this.itinerarioUsuario.add(propuesta);
 
 			System.out.println("Te quedan " + this.presupuesto + " monedas y " + this.tiempoDisponible + " horas");
 		}

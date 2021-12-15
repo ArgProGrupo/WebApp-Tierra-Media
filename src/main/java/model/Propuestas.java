@@ -107,7 +107,9 @@ public abstract class Propuestas {
 	protected abstract Boolean esOContiene(Propuestas propuesta);
 
 	public Integer getIdPromocion() {
+		if(!(this.idPromocion == null))
 		return this.idPromocion;
+		else return 0;
 	}
 
 	public ArrayList<Propuestas> getPromoList() {
