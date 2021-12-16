@@ -40,11 +40,11 @@ public class EditUsuarioServlet extends HttpServlet implements Servlet {
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		String nombre = req.getParameter("username");
 		String password = req.getParameter("password");
-		Integer admin = Integer.parseInt("admin");  // Da problemas a la hora de editar
+		Boolean admin = Boolean.parseBoolean("admin");  // Da problemas a la hora de editar
 		String tipoAtraccion = req.getParameter("tipoAtraccion");
 		Integer presupuesto = Integer.parseInt(req.getParameter("presupuesto"));
 		Double tiempoDisponible = Double.parseDouble(req.getParameter("tiempoDisponible"));
-		Integer active = Integer.parseInt(req.getParameter("active"));
+		Boolean active = Boolean.parseBoolean(req.getParameter("active"));
 
 
 		Usuario temp_user = usuarioService.update(id, nombre, password, admin, tipoAtraccion , presupuesto, tiempoDisponible, active);
