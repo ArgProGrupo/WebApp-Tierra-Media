@@ -15,9 +15,8 @@ public class UsuarioService {
 		FactoryDAO.getUsuarioDAO().delete(id);
 	}
 	
-	public Usuario update(Integer id, String nombre, String password, Boolean admin, String atraccionFavorita, Integer presupuesto, Double tiempo, Boolean active) {
+	public Usuario update(Integer id, String nombre, String password, Integer admin, String atraccionFavorita, Integer presupuesto, Double tiempo, Integer active) {
 		Usuario usuario = new Usuario(id, nombre, password, admin, atraccionFavorita, presupuesto, tiempo, active);
-		usuario.setPassword(password);
 		if(usuario.isValid()) {
 			FactoryDAO.getUsuarioDAO().update(usuario);
 		}
