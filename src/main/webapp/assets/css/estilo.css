@@ -17,6 +17,7 @@
 	display: flex;
 	justify-content: space-between;
 	background: var(--clarito);
+	justify-content: space-evenly;
 }
 
 .btn-primary {
@@ -29,5 +30,5 @@
 }
 
 .card-img-top {
-	height: 100px
+	height: 45%;
 }

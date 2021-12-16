@@ -16,29 +16,40 @@
 
 <main>
 
-<a class="btn btn-success" href="atracciones.do" role="button">Nueva Atracción</a>
-
 <h2><a id="Aventura"></a>Aventura</h2>
 
 	<div class="list-group">
 	
 	<c:forEach items="${ promociones }" var="promocion">
+	
+	<c:out value="${ promocion.calcularCosto() }"></c:out>
 		<c:if test="${ promocion.getTipo() == 'AVENTURA' }">
 
-		  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+		  <div class="list-group-item list-group-item-action" aria-current="true">
 		    <div class="d-flex w-100 justify-content-between">
 		      <h5 class="mb-1"><c:out value="${ promocion.getNombrePromo() }"></c:out> </h5>
 		      <div class="btn-group" role="group" aria-label="Button group">
-		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
-		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-		  <button type="button" class="btn btn-primary">Comprar</button>
-		  
+		      
+		      <c:choose>
+			  <c:when test="${ usuario.getPresupuesto() > 1 && promocion.calcularCupo() > 0 }">
+		      
+		  <a role="button" href="comprarPromo.do?id=${ promocion.getIdPromocion() }" class="btn btn-primary" aria-current="true">Comprar</a>
+		 
+		 </c:when>
+		 
+		 <c:otherwise>
+					<a href="#" class="btn btn-secondary rounded disabled" role="button">No se puede comprar</a>
+				</c:otherwise>
+				
+		  </c:choose>
 	
 		</div>
 		    </div>
 		    <p class="mb-1">Descripción</p>
-		    <small>Detalle</small>
-		  </a>
+		    <small> <c:out value="Costo: ${ promocion.calcularCosto() } - 
+		    					Tiempo: ${ promocion.calcularTiempo() } -
+		    					Cupo: 	${ promocion.calcularCupo() }"></c:out> </small>
+		  </div>
 	  </c:if>
 	</c:forEach>
 	
@@ -46,21 +57,28 @@
 
 		<c:if test="${ atraccion.getTipo() == 'AVENTURA' }">
 
-		  <a role="button" href="comprar.do?id=${ atraccion.getIdAtraccion() }" class="list-group-item list-group-item-action" aria-current="true">
+		  <div class="list-group-item list-group-item-action" aria-current="true">
 		    <div class="d-flex w-100 justify-content-between">
 		      <h5 class="mb-1"><c:out value="${ atraccion.getNombre() }"></c:out> </h5>
 		      <div class="btn-group" role="group" aria-label="Button group">
-		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
-		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
 		  <!--<form action="" method="post" class="btn btn-primary">Comprar</form> -->
-		    <button type="button" class="btn btn-primary">Comprar</button> 
 		  
+		  <c:choose>
+			  <c:when test="${ usuario.puedeComprar(atraccion) && atraccion.getCupo() > 0  }">
+			   		<a role="button" href="comprarAtraccion.do?id=${ atraccion.getIdAtraccion() }" class="btn btn-primary" aria-current="true">Comprar</a>
+			  </c:when>
+			  <c:otherwise>
+					<a href="#" class="btn btn-secondary rounded disabled" role="button">No se puede comprar</a>
+				</c:otherwise>
+			</c:choose>
 	
 		</div>
 		    </div>
 		    <p class="mb-1">Descripción</p>
-		    <small>Detalle</small>
-		  </a>
+		    <small> <c:out value="Costo: ${ atraccion.getCosto() } - 
+		    					Tiempo: ${ atraccion.getTiempo() } -
+		    					Cupo: 	${ atraccion.getCupo() }"></c:out> </small>
+		  </div>
 	  </c:if>
 	  
   
@@ -71,20 +89,29 @@
   <c:forEach items="${ promociones }" var="promocion">
 		<c:if test="${ promocion.getTipo() == 'PAISAJE' }">
 
-		  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+		  <div class="list-group-item list-group-item-action" aria-current="true">
 		    <div class="d-flex w-100 justify-content-between">
 		      <h5 class="mb-1"><c:out value="${ promocion.getNombrePromo() }"></c:out> </h5>
 		      <div class="btn-group" role="group" aria-label="Button group">
-		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
-		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-		  <button type="button" class="btn btn-primary">Comprar</button>
+		      
+		      <c:choose>
+			  <c:when test="${ usuario.getPresupuesto() > 1000 && promocion.calcularCupo() > 0  }">
+		  <a role="button" href="comprarPromo.do?id=${ promocion.getIdPromocion() }" class="btn btn-primary" aria-current="true">Comprar</a>
 		  
+		  </c:when>
+		  
+		  <c:otherwise>
+					<a href="#" class="btn btn-secondary rounded disabled" role="button">No se puede comprar</a>
+				</c:otherwise>
+		  </c:choose>
 	
 		</div>
 		    </div>
 		    <p class="mb-1">Descripción</p>
-		    <small>Detalle</small>
-		  </a>
+		    <small><c:out value="Costo: ${ promocion.calcularCosto() } - 
+		    					Tiempo: ${ promocion.calcularTiempo() } -
+		    					Cupo: 	${ promocion.calcularCupo() }"></c:out></small>
+		  </div>
 	  </c:if>
 	</c:forEach>
   
@@ -92,20 +119,25 @@
 
 		<c:if test="${ atraccion.getTipo() == 'PAISAJE' }">
 
-		  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+		  <div class="list-group-item list-group-item-action" aria-current="true">
 		    <div class="d-flex w-100 justify-content-between">
 		      <h5 class="mb-1"><c:out value="${ atraccion.getNombre() }"></c:out> </h5>
 		      <div class="btn-group" role="group" aria-label="Button group">
-		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
-		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-		  <button type="button" class="btn btn-primary">Comprar</button>
+		      
+		      <c:choose>
+			  <c:when test="${ usuario.puedeComprar(atraccion) && atraccion.getCupo() > 0  }">
+		 <a role="button" href="comprarAtraccion.do?id=${ atraccion.getIdAtraccion() }" class="btn btn-primary" aria-current="true">Comprar</a>
 		  
+		  </c:when>
+		  </c:choose>
 	
 		</div>
 		    </div>
 		    <p class="mb-1">Descripción</p>
-		    <small>Detalle</small>
-		  </a>
+		    <small><c:out value="Costo: ${ atraccion.getCosto() } - 
+		    					Tiempo: ${ atraccion.getTiempo() } -
+		    					Cupo: 	${ atraccion.getCupo() }"></c:out></small>
+		  </div>
 	  </c:if>
 	  
   
@@ -116,41 +148,59 @@
   <c:forEach items="${ promociones }" var="promocion">
 		<c:if test="${ promocion.getTipo() == 'DEGUSTACION' }">
 
-		  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+		  <div class="list-group-item list-group-item-action" aria-current="true">
 		    <div class="d-flex w-100 justify-content-between">
 		      <h5 class="mb-1"><c:out value="${ promocion.getNombrePromo() }"></c:out> </h5>
 		      <div class="btn-group" role="group" aria-label="Button group">
-		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
-		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-		  <button type="button" class="btn btn-primary">Comprar</button>
+		      
+		      <c:choose>
+			  <c:when test="${ usuario.getPresupuesto() > 1000 && promocion.calcularCupo() > 0  }">
+			  
+		  <a role="button" href="comprarPromo.do?id=${ promocion.getIdPromocion() }" class="btn btn-primary" aria-current="true">Comprar</a>
 		  
+		  </c:when>
+		  
+		  <c:otherwise>
+					<a href="#" class="btn btn-secondary rounded disabled" role="button">No se puede comprar</a>
+				</c:otherwise>
+				
+		  </c:choose>
 	
 		</div>
 		    </div>
 		    <p class="mb-1">Descripción</p>
-		    <small>Detalle</small>
-		  </a>
+		    <small><c:out value="Costo: ${ promocion.calcularCosto() } - 
+		    					Tiempo: ${ promocion.calcularTiempo() } -
+		    					Cupo: 	${ promocion.calcularCupo() }"></c:out></small>
+		  </div>
 	  </c:if>
 	</c:forEach>
   
   <c:forEach items="${ atracciones }" var="atraccion">
 
 		<c:if test="${ atraccion.getTipo() == 'DEGUSTACION' }">
-
-		  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+		
+		  <div class="list-group-item list-group-item-action" aria-current="true">
 		    <div class="d-flex w-100 justify-content-between">
 		      <h5 class="mb-1"><c:out value="${ atraccion.getNombre() }"></c:out> </h5>
 		      <div class="btn-group" role="group" aria-label="Button group">
-		  <button class="btn edit btn-light"><i class="fa fa-edit"></i></button>
-		  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-		  <button type="button" class="btn btn-primary">Comprar</button>
+		      
+		      <c:choose>
+			  <c:when test="${ usuario.puedeComprar(atraccion) && atraccion.getCupo() > 0  }">
+			  
+		  <a role="button" href="comprarAtraccion.do?id=${ atraccion.getIdAtraccion() }" class="btn btn-primary" aria-current="true">Comprar</a>
+		  
+		 </c:when>
+		 </c:choose>
 		  
 	
 		</div>
 		    </div>
 		    <p class="mb-1">Descripción</p>
-		    <small>Detalle</small>
-		  </a>
+		    <small><c:out value="Costo: ${ atraccion.getCosto() } - 
+		    					Tiempo: ${ atraccion.getTiempo() } -
+		    					Cupo: 	${ atraccion.getCupo() }"></c:out></small>
+		  </div>
 	  </c:if>
 	  
   

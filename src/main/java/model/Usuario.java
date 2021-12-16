@@ -96,11 +96,6 @@ public class Usuario {
 
 	public String getItinerarioString() {
 		String itinerario = "";
-		if (itinerario == "") {
-			for (Propuestas p : itinerarioUsuario)
-				itinerario += p + "\n";
-		} else
-			itinerario = "";
 		return itinerario;
 
 	}

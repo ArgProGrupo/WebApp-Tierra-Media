@@ -19,18 +19,19 @@ import model.Usuario;
 import persistence.commons.FactoryDAO;
 import services.AtraccionService;
 import services.ComprarAtraccionService;
+import services.ComprarPromocionService;
 import services.PromocionService;
 
-@WebServlet("/comprarAtraccion.do")
-public class ComprarAtraccionServlet extends HttpServlet implements Servlet {
-	private static final long serialVersionUID = -1500626018984218236L;
-	
-	private ComprarAtraccionService comprarAtraccionService;
+@WebServlet("/comprarPromo.do")
+public class ComprarPromocionServlet extends HttpServlet implements Servlet {
+
+	private static final long serialVersionUID = -7128945132797889313L;
+	private ComprarPromocionService comprarPromocionService;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		this.comprarAtraccionService = new ComprarAtraccionService();
+		this.comprarPromocionService = new ComprarPromocionService();
 	}
 
 	@Override
@@ -38,9 +39,9 @@ public class ComprarAtraccionServlet extends HttpServlet implements Servlet {
 			throws ServletException, IOException {
 		
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
-		Integer atraccionId = Integer.parseInt(req.getParameter("id"));
+		Integer promocionId = Integer.parseInt(req.getParameter("id"));
 		
-		Map<String, String> errores = comprarAtraccionService.comprar(usuario.getIdUsuario(), atraccionId);
+		Map<String, String> errores = comprarPromocionService.comprar(usuario.getIdUsuario(), promocionId);
 		
 		Usuario usuario2 = FactoryDAO.getUsuarioDAO().findByIdUsuario(usuario.getIdUsuario());
 		req.getSession().setAttribute("usuario", usuario2);

@@ -29,20 +29,20 @@ public class PromocionService {
 		return promocion;
 	}
 	
-	public Atraccion findById(Integer id) {
-		return FactoryDAO.getAtraccionDAO().findByIdAtraccion(id);
+	public Promocion findById(Integer id) {
+		return FactoryDAO.getPromocionDAO().findByIdPromo(id);
 	}
 
-	public Atraccion create(String nombrePropuesta, Integer costo, Double tiempo, Integer cupo, String tipo) {
-		Atraccion atraccion = new Atraccion(-1, nombrePropuesta, costo, tiempo, cupo, tipo);
+	public Promocion create(Integer id, String nombrePropuesta, Integer descuento, String tipoPromo, String tipo) {
+		Promocion promocion = new Promocion(id, nombrePropuesta, descuento, tipoPromo, tipo);
 
-		if (atraccion.isValid()) {
+		if (promocion.isValid()) {
 			//AtraccionDAO atraccionDAO = FactoryDAO.getAtraccionDAO();
-			FactoryDAO.getAtraccionDAO().insert(atraccion);
+			FactoryDAO.getPromocionDAO().insert(promocion);
 			// XXX: si no devuelve "1", es que hubo más errores
 		}
 
-		return atraccion;
+		return promocion;
 	}
 	
 //	public static void main(String[] args) throws ServletException {

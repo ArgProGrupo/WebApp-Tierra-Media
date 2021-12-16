@@ -31,7 +31,7 @@
 		    <li class="list-group-item"><b><c:out value="${ tmp_usuario.getTipoAtraccionFavorita() }"></c:out></b></li>
 		    <li class="list-group-item"><c:out value="${ tmp_usuario.getPresupuesto() }"></c:out></li>
 		    <li class="list-group-item"><c:out value="${ tmp_usuario.getTiempo() }"></c:out></li>
-		    <li class="list-group-item">Itinerario: </li>
+		    <li class="list-group-item"><c:out value="${ tmp_usuario.getItinerarioUsuario() }"></c:out></li>
 		    <!-- <li class="list-group-item"><c:out value="${ tmp_usuario.getItinerarioString() }"></c:out> </li> -->
 	    </ul>
 	    <a class="btn btn-warning" role="button" href="editUsuarios.adm?id=${ tmp_usuario.getIdUsuario() }">Editar Usuario</a>
