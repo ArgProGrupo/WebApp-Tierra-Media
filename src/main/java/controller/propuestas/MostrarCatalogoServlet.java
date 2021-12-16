@@ -41,7 +41,7 @@ public class MostrarCatalogoServlet extends HttpServlet implements Servlet {
 		req.setAttribute("promociones", promociones);
 
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/catalogo.jsp");
+				.getRequestDispatcher("/views/atracciones/catalogo.jsp");
 		
 //		RequestDispatcher dispatcher2 = getServletContext()
 //				.getRequestDispatcher("/catalogo.jsp");

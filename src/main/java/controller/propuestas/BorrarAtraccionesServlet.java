@@ -34,14 +34,4 @@ public class BorrarAtraccionesServlet extends HttpServlet implements Servlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/atracciones/atracciones.jsp");
 		dispatcher.forward(req, resp);
 	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Integer id = Integer.parseInt(req.getParameter("id"));
-
-		atraccionService.delete(id);
-
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/TierraMediaWeb/atracciones/borrar.jsp");
-			dispatcher.forward(req, resp);
-		}
 }

@@ -65,7 +65,7 @@
 		  
 		  <c:choose>
 			  <c:when test="${ usuario.puedeComprar(atraccion) && atraccion.getCupo() > 0  }">
-			   		<a role="button" href="comprarAtraccion.do?id=${ atraccion.getIdAtraccion() }" class="btn btn-primary" aria-current="true">Comprar</a>
+			   		<a role="button" href="atracciones/comprarAtraccion.do?id=${ atraccion.getIdAtraccion() }" class="btn btn-primary" aria-current="true">Comprar</a>
 			  </c:when>
 			  <c:otherwise>
 					<a href="#" class="btn btn-secondary rounded disabled" role="button">No se puede comprar</a>
@@ -126,7 +126,7 @@
 		      
 		      <c:choose>
 			  <c:when test="${ usuario.puedeComprar(atraccion) && atraccion.getCupo() > 0  }">
-		 <a role="button" href="comprarAtraccion.do?id=${ atraccion.getIdAtraccion() }" class="btn btn-primary" aria-current="true">Comprar</a>
+		 <a role="button" href="atracciones/comprarAtraccion.do?id=${ atraccion.getIdAtraccion() }" class="btn btn-primary" aria-current="true">Comprar</a>
 		  
 		  </c:when>
 		  </c:choose>
@@ -188,7 +188,7 @@
 		      <c:choose>
 			  <c:when test="${ usuario.puedeComprar(atraccion) && atraccion.getCupo() > 0  }">
 			  
-		  <a role="button" href="comprarAtraccion.do?id=${ atraccion.getIdAtraccion() }" class="btn btn-primary" aria-current="true">Comprar</a>
+		  <a role="button" href="atracciones/comprarAtraccion.do?id=${ atraccion.getIdAtraccion() }" class="btn btn-primary" aria-current="true">Comprar</a>
 		  
 		 </c:when>
 		 </c:choose>
