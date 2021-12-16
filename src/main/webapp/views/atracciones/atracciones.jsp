@@ -44,7 +44,7 @@
 									<a href="delete.adm?name=${ atraccion.getNombre() }">Borrar</a>
 								</c:when>
 								<c:otherwise>
-									<a href="buy.do?id=${ product.getId() }">Comprar</a>
+									<a href="comprarAtraccion.do?id=${ atraccion.getIdAtraccion() }">Comprar</a>
 								</c:otherwise>
 							</c:choose>
 							

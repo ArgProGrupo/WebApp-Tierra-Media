@@ -21,7 +21,7 @@ import services.AtraccionService;
 import services.ComprarAtraccionService;
 import services.PromocionService;
 
-@WebServlet("/comprarAtraccion.do")
+@WebServlet("/atracciones/comprarAtraccion.do")
 public class ComprarAtraccionServlet extends HttpServlet implements Servlet {
 	private static final long serialVersionUID = -1500626018984218236L;
 	
@@ -53,7 +53,7 @@ public class ComprarAtraccionServlet extends HttpServlet implements Servlet {
 		}
 		
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/catalogo.jsp");
+				.getRequestDispatcher("/views/atracciones/catalogo.jsp");
 		
 		dispatcher.forward(req, resp);
 
