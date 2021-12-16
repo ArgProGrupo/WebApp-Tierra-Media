@@ -37,7 +37,7 @@ public class MostrarCatalogoServlet extends HttpServlet implements Servlet {
 		List<Propuestas> atracciones = atraccionService.list();
 		req.setAttribute("atracciones", atracciones);
 		
-		List<Propuestas> promociones = promocionService.list();
+		List<Propuestas> promociones = promocionService.list(atracciones);
 		req.setAttribute("promociones", promociones);
 
 		RequestDispatcher dispatcher = getServletContext()

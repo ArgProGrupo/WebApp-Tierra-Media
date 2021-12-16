@@ -2,7 +2,6 @@ package services;
 
 import java.util.List;
 
-import model.Atraccion;
 import model.Promocion;
 import model.Propuestas;
 import persistence.commons.FactoryDAO;
@@ -11,6 +10,9 @@ public class PromocionService {
 	
 	public List<Propuestas> list() {
 		return FactoryDAO.getPromocionDAO().findAll();
+	}
+	public List<Propuestas> list(List<Propuestas> a) {
+		return FactoryDAO.getPromocionDAO().findAll(a);
 	}
 	
 //	public void delete(Integer id) {
