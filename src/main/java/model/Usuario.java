@@ -2,6 +2,8 @@ package model;
 
 import java.util.*;
 
+import com.oracle.wls.shaded.org.apache.bcel.generic.RETURN;
+
 import utils.Crypt;
 
 public class Usuario {
@@ -161,11 +163,6 @@ public class Usuario {
 		return admin;
 	}
 	
-	public void setAdmin(Integer admin1) {
-		if(admin1 == 1)
-			this.admin = true;
-	}
-	
 	public Boolean isAdmin() {
 		return admin;
 	}
@@ -173,10 +170,27 @@ public class Usuario {
 	public Boolean getActive() {
 		return active;
 	}
+	public void setAdmin(Integer admin1) {
+		if(admin1 == 1)
+			this.admin = true;
+		else this.admin = false;
+	}
+	public Integer getAdminToInt() {
+		if(this.admin = true)
+			return 1;
+		else return 0;
+	}
 	
 	public void setActive(Integer active1) {
 		if(active1 == 1)
 			this.active = true;
+		else this.active = false;
+	}
+	
+	public Integer getActiveToInt() {
+		if(this.active = true)
+			return 1;
+		else return 0;
 	}
 	
 	public Boolean isActive() {

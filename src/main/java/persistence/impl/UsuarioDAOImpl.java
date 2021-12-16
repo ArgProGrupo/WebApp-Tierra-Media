@@ -155,11 +155,11 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.setString(1, t.getNombre());
 			statement.setString(2, t.getPassword());
-			statement.setInt(3, t.getAdmin() ? 1 : 0);
+			statement.setInt(3, t.isAdmin() ? 1 : 0);
 			statement.setString(4, t.getTipoAtraccionFavorita());
 			statement.setInt(5, t.getPresupuesto());
 			statement.setDouble(6, t.getTiempo());
-			statement.setInt(7, t.getActive() ? 1 : 0);
+			statement.setInt(7, t.isActive() ? 1 : 0);
 			statement.setInt(8, t.getIdUsuario());
 
 			int rows = statement.executeUpdate();

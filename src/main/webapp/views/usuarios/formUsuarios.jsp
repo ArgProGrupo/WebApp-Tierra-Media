@@ -25,7 +25,7 @@
 	<span class="input-group-text" id="inputGroup-sizing-default"><label
 		for="admin" class="col-form-label">Administrador:</label></span> <input
 		type="number" class="form-control" id="admin" name="admin" required
-		value="${tmp_user.admin}">
+		value="${tmp_user.isAdmin() ? 1 : 0}">
 </div>
 <div class="input-group mb-3">
 	<span class="input-group-text" id="inputGroup-sizing-default"><label
@@ -63,7 +63,7 @@
 	<span class="input-group-text" id="inputGroup-sizing-default"><label
 		for="active" class="col-form-label">Active:</label></span> <input
 		type="number" class="form-control" id="active" name="active" required
-		value="${tmp_user.active}">
+		value="${tmp_user.isActive() ? 1 : 0}">
 </div>
 
 <div>
