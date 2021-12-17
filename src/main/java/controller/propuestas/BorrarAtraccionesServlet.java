@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Atraccion;
 import services.AtraccionService;
 
-@WebServlet("/atracciones/borrar.adm")
+@WebServlet("/atracciones/borrarAtraccion.adm")
 public class BorrarAtraccionesServlet extends HttpServlet implements Servlet {
 
 	private static final long serialVersionUID = -2821548431939808584L;
@@ -29,7 +29,7 @@ public class BorrarAtraccionesServlet extends HttpServlet implements Servlet {
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		Atraccion atraccion = atraccionService.findById(id);
 		req.setAttribute("atraccion", atraccion);
-		atraccionService.delete(atraccion.getIdAtraccion());
+		atraccionService.delete(atraccion);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/atracciones/atracciones.jsp");
 		dispatcher.forward(req, resp);

@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
+import persistence.commons.FactoryDAO;
+import persistence.impl.AtraccionDAOImpl;
 import services.UsuarioService;
 
 @WebServlet("/usuarios/editUsuarios.adm")
@@ -48,7 +50,7 @@ public class EditUsuarioServlet extends HttpServlet implements Servlet {
 
 
 		Usuario temp_user = usuarioService.update(id, nombre, password, admin, tipoAtraccion , presupuesto, tiempoDisponible, active);
-
+		
 		if (temp_user.isValid()) {
 			resp.sendRedirect("/TierraMediaWeb/usuarios/usuarios.adm");
 		} else {

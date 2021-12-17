@@ -1,7 +1,6 @@
-package controller.usuarios;
+package controller.propuestas;
 
 import java.io.IOException;
-import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.Servlet;
@@ -11,16 +10,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
-import persistence.commons.FactoryDAO;
-import persistence.impl.AtraccionDAOImpl;
 import services.UsuarioService;
 
-@WebServlet("/usuarios/usuarios.adm")
-public class MostrarUsuariosServlet extends HttpServlet implements Servlet {
+@WebServlet("/usuarios/borrarUsuario.adm")
+public class BorrarUsuarioServlet extends HttpServlet implements Servlet {
 
-	private static final long serialVersionUID = -5158378959933399013L;
+	private static final long serialVersionUID = -1854507212890311557L;
 	private UsuarioService usuarioService;
-
+	
 	@Override
 	public void init() throws ServletException {
 		super.init();
@@ -29,14 +26,12 @@ public class MostrarUsuariosServlet extends HttpServlet implements Servlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Usuario> usuarios = usuarioService.list();
-		for(Usuario u : usuarios) {
-		u.setItinerarioUsuario(((AtraccionDAOImpl) FactoryDAO.getAtraccionDAO()).findItineario(u.getIdUsuario()));
-		}
-		req.setAttribute("usuarios", usuarios);
-
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/views/usuarios/usuarios.jsp");
+		Integer id = Integer.parseInt(req.getParameter("id"));
+		Usuario usuario = usuarioService.findById(id);
+		req.setAttribute("atraccion", usuario);
+		usuarioService.delete(usuario.getIdUsuario());
+		
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/usuarios/usuarios.jsp");
 		dispatcher.forward(req, resp);
 	}
 }

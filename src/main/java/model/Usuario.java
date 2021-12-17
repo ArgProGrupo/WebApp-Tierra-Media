@@ -96,8 +96,12 @@ public class Usuario {
 
 	public String getItinerarioString() {
 		String itinerario = "";
+		for (Propuestas p : this.itinerarioUsuario) {
+			itinerario += p.getNombre() + ", ";
+		}
+		if (this.itinerarioUsuario.isEmpty())
+			itinerario = "¡Todavía no has comprado ninguna propuesta!";
 		return itinerario;
-
 	}
 
 	public boolean puedeComprar(Propuestas propuesta) {
@@ -159,6 +163,17 @@ public class Usuario {
 	
 	public Boolean getAdmin() {
 		return admin;
+	}
+	
+	public Integer setAdminToInt(Boolean ad) {
+		if(this.admin)
+			return 1;
+		else return 0;
+	}
+	public Integer setActiveToInt(Boolean ad) {
+		if(this.active)
+			return 1;
+		else return 0;
 	}
 	
 	public void setAdmin(Integer admin1) {

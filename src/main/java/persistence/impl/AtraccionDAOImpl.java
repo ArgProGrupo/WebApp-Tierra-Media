@@ -3,6 +3,7 @@ package persistence.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -134,6 +135,27 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 		}
 	}
 
+	public ArrayList<Propuestas> findItineario(Integer id) {
+		try {
+			String query = "SELECT i.id_atraccion FROM itinerario i WHERE id_usuario = ?";
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement statement = conn.prepareStatement(query);
+
+			statement.setInt(1, id);
+
+			ResultSet results = statement.executeQuery();
+
+			ArrayList<Propuestas> itinerario = new ArrayList<Propuestas>();
+			while (results.next()) {
+				Atraccion a = findByIdAtraccion(results.getInt(1));
+				itinerario.add((Propuestas) (a));
+			}
+			return itinerario;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+
 	@Override
 	public List<Atraccion> findByNombre(String nombre) {
 		try {
@@ -229,22 +251,6 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 				atraccion.add(toAtraccion(results));
 			}
 			return atraccion;
-		} catch (Exception e) {
-			throw new MissingDataException(e);
-		}
-	}	
-
-	@Override
-	public int delete(Integer id) {
-		try {
-			String query = "UPDATE USUARIO SET ACTIVE = 0 WHERE ID = ?";
-			Connection conn = ConnectionProvider.getConnection();
-			PreparedStatement statement = conn.prepareStatement(query);
-
-			statement.setInt(1, id);
-
-			int rows = statement.executeUpdate();
-			return rows;
 		} catch (Exception e) {
 			throw new MissingDataException(e);
 		}

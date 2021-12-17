@@ -8,14 +8,18 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import model.Atraccion;
 import model.Propuestas;
 import model.Usuario;
 import nullobjects.NullUsuario;
 import persistence.UsuarioDAO;
+import persistence.impl.AtraccionDAOImpl;
 import persistence.commons.ConnectionProvider;
 import persistence.commons.MissingDataException;
 
 public class UsuarioDAOImpl implements UsuarioDAO {
+
+	private static final String AtraccionDAOImpl = null;
 
 	private Usuario toUsuario(ResultSet result) {
 		try {
@@ -172,7 +176,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	@Override
 	public int delete(Integer id) {
 		try {
-			String query = "UPDATE USUARIO SET ACTIVE = 0 WHERE ID = ?";
+			String query = "UPDATE USUARIO SET ACTIVE = 0 WHERE ID_USUARIO = ?";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.setInt(1, id);
@@ -301,5 +305,28 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			throw new MissingDataException(e);
 		}
 	}
-
+	
+//	public List<Propuestas> getItinerario(Usuario t){
+//		try {
+//			String query = "SELECT i.id_atraccion FROM itinerario i WHERE id_usuario = ?";
+//			Connection conn = ConnectionProvider.getConnection();
+//			PreparedStatement statement = conn.prepareStatement(query);
+//
+//			statement.setInt(1, t.getIdUsuario());
+//
+//			ResultSet results = statement.executeQuery();
+//			
+//			 
+//
+//			List<Propuestas> itinerario = new LinkedList<Propuestas>();
+//			while (results.next()) {
+//				
+//				Atraccion a = (AtraccionDAOImpl).findByIdAtraccion((results.getInt(1)));;
+//				itinerario.add((Propuestas) (results));
+//			}
+//			return itinerario;
+//		} catch (Exception e) {
+//			throw new MissingDataException(e);
+//		}
+//	}
 }

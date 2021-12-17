@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
+import persistence.commons.FactoryDAO;
+import persistence.impl.AtraccionDAOImpl;
 import services.UsuarioService;
 
 @WebServlet("/usuarios/nuevoUsuario.adm")
@@ -42,8 +44,9 @@ public class CreateUsuarioServlet extends HttpServlet implements Servlet {
 		Double tiempoDisponible = Double.parseDouble(req.getParameter("tiempoDisponible"));
 		Integer active = Integer.parseInt(req.getParameter("active"));
 		
-
 		Usuario tmp_user = usuarioService.create(nombre, password, admin, tipoAtraccion, presupuesto, tiempoDisponible, active);
+		
+		tmp_user.setItinerarioUsuario(((AtraccionDAOImpl) FactoryDAO.getAtraccionDAO()).findItineario(tmp_user.getIdUsuario()));
 		
 		if (tmp_user.isValid()) {
 			resp.sendRedirect("/TierraMediaWeb/usuarios/usuarios.adm");

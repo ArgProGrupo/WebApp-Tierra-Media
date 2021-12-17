@@ -31,11 +31,12 @@
 		    <li class="list-group-item"><b><c:out value="${ tmp_usuario.getTipoAtraccionFavorita() }"></c:out></b></li>
 		    <li class="list-group-item"><c:out value="${ tmp_usuario.getPresupuesto() }"></c:out></li>
 		    <li class="list-group-item"><c:out value="${ tmp_usuario.getTiempo() }"></c:out></li>
-		    <li class="list-group-item"><c:out value="${ tmp_usuario.getItinerarioUsuario() }"></c:out></li>
+		    <li class="list-group-item"><c:out value="${ tmp_usuario.getItinerarioString() }"></c:out></li>
+		    <li class="list-group-item"><c:out value="${ tmp_usuario.isActive() }"></c:out></li>
 		    <!-- <li class="list-group-item"><c:out value="${ tmp_usuario.getItinerarioString() }"></c:out> </li> -->
 	    </ul>
 	    <a class="btn btn-warning" role="button" href="editUsuarios.adm?id=${ tmp_usuario.getIdUsuario() }">Editar Usuario</a>
-	    <a class="btn btn-danger" role="button" href="deleteUsuarios.adm?name=${ tmp_usuario.getNombre() }">Borrar Usuario</a>
+	    <a class="btn btn-danger" role="button" href="borrarUsuario.adm?id=${ tmp_usuario.getIdUsuario() }">Borrar Usuario</a>
       </div>
     </div>
   </div>

@@ -2,6 +2,8 @@ package model;
 
 import java.util.HashMap;
 
+import persistence.impl.AtraccionDAOImpl;
+
 public class Atraccion extends Propuestas {
 	private int idAtraccion;
 
@@ -20,6 +22,9 @@ public class Atraccion extends Propuestas {
 		super();
 		this.idAtraccion = idAtraccion;
 		this.esPromo = false;
+	}
+
+	public Atraccion(AtraccionDAOImpl findByIdAtraccion) {
 	}
 
 	public String getTipo() {

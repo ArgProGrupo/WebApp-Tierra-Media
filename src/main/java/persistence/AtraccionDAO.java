@@ -14,6 +14,5 @@ public interface AtraccionDAO extends GenericDAO<Propuestas> {
 	public abstract List<Atraccion> findByDuracion(double duracion);
 	public abstract List<Atraccion> findByCupo(int cupo);
 	public abstract List<Atraccion> findByTipo(String tipo);
-	public abstract int delete(Integer id);
 
 }

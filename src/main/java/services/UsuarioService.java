@@ -1,9 +1,12 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import model.Propuestas;
 import model.Usuario;
 import persistence.commons.FactoryDAO;
+import persistence.impl.AtraccionDAOImpl;
 
 public class UsuarioService {
 	
@@ -18,6 +21,7 @@ public class UsuarioService {
 	public Usuario update(Integer id, String nombre, String password, Boolean admin, String atraccionFavorita, Integer presupuesto, Double tiempo, Boolean active) {
 		Usuario usuario = new Usuario(id, nombre, password, admin, atraccionFavorita, presupuesto, tiempo, active);
 		usuario.setPassword(password);
+		
 		if(usuario.isValid()) {
 			FactoryDAO.getUsuarioDAO().update(usuario);
 		}
@@ -38,7 +42,6 @@ public class UsuarioService {
 			FactoryDAO.getUsuarioDAO().insert(usuario);
 			// XXX: si no devuelve "1", es que hubo más errores
 		}
-
 		return usuario;
 	}
 	

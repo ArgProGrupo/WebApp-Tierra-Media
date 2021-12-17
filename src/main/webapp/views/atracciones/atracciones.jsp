@@ -41,7 +41,7 @@
 							<c:choose>
 								<c:when test="${ usuario.isAdmin() }">
 									<a href="edit.adm?id=${ atraccion.getIdAtraccion() }">Editar</a>
-									<a href="borrar.adm?id=${ atraccion.getIdAtraccion() }">Borrar</a>
+									<a href="borrarAtraccion.adm?id=${ atraccion.getIdAtraccion() }">Borrar</a>
 								</c:when>
 								<c:otherwise>
 									<a href="comprarAtraccion.do?id=${ atraccion.getIdAtraccion() }">Comprar</a>

@@ -12,8 +12,8 @@ public class AtraccionService {
 		return FactoryDAO.getAtraccionDAO().findAll();
 	}
 	
-	public void delete(Integer id) {
-		FactoryDAO.getAtraccionDAO().delete(id);
+	public void delete(Atraccion a) {
+		FactoryDAO.getAtraccionDAO().delete(a);
 	}
 	
 	public Atraccion update(Integer id, String nombrePropuesta, Integer costo, Double tiempo, Integer cupo, String tipo) {
